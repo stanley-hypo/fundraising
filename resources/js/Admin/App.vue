@@ -16,6 +16,7 @@
 
 <script>
 import Drawer from "./components/Layouts/Drawer.vue";
+import Notify from "./components/notify.vue";
 import AdminAuthService from "./service/AdminAuthService";
 
 export default {
