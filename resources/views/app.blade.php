@@ -26,6 +26,7 @@
 
         @vite(['resources/js/web/app.js'])
 hihi
+        hi
     </body>
 </html>
 
