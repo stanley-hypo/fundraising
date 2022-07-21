@@ -25,7 +25,7 @@
         </div>
 
         @vite(['resources/js/web/app.js'])
-
+hihi
     </body>
 </html>
 
