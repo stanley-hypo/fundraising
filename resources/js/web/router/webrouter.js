@@ -2,9 +2,10 @@ import { createWebHistory, createRouter } from "vue-router";
 import Auth from "../store/Auth";
 //VUE
 import Home from '../view/Home.vue'
+import Donation  from '../view/Donation.vue'
 
 const routes = [
-    {path: '/', component: Home,  meta: { requiresAuth: false }},
+    {path: '/', component: Donation,  meta: { requiresAuth: false }},
     { path: "/:pathMatch(.*)*", component: {
             template: "",
             created: function() {

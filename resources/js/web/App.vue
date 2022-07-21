@@ -1,5 +1,5 @@
 <template>
-    <q-layout view="hHh lpR fFf" class="bg-grey-1">
+    <q-layout view="hHh lpR fFf" class="bg-grey-1 flex flex-col h-screen justify-between">
         <topmenu></topmenu>
         <q-page-container>
             <router-view v-slot="{ Component }">

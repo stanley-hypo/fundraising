@@ -15,14 +15,15 @@
         "vite": "^3.0.0"
     },
     "dependencies": {
-        "secure-ls": "^1.2.6",
         "@quasar/extras": "^1.14.3",
         "quasar": "^2.7.5",
+        "secure-ls": "^1.2.6",
+        "tw-elements": "^1.0.0-alpha12",
         "vue": "^3.2.36",
+        "vue-i18n": "^9.1.10",
         "vue-loader": "^17.0.0",
         "vue-router": "^4.0.15",
         "vuex": "^4.0.2",
-        "vue-i18n": "^9.1.10",
         "vuex-persistedstate": "^4.1.0"
     }
 }

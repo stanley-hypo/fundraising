@@ -11,25 +11,10 @@
           <div class="gt-sm">
               <q-btn
                   outline
-                  label="所有課程"
+                  label="Donation"
                   class="q-ma-md text-red-400"
-                  href="/course"
+                  to="/"
               ></q-btn>
-              <q-btn
-                  outline
-                  label="課程部門"
-                  class="q-ma-md text-red-400"
-              ></q-btn>
-              <q-btn
-                  outline
-                  label="暫定位置"
-                  class="q-ma-md text-red-400"
-              ></q-btn>
-             <q-btn
-                 outline
-                 label="港青會員"
-                 class="q-ma-md text-red-400"
-             ></q-btn>
           </div>
           <div class="lt-md">
               <q-btn

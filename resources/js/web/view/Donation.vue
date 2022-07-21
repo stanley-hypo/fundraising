@@ -1,16 +1,17 @@
 <template>
     <section>
+            hihi
     </section>
 </template>
 
 <script>
 export default {
-        props:[],
-        name: 'Home',
-        components: {
-
-        }
+    props:[],
+    name: 'Donation',
+    components: {
 
     }
+
+}
 </script>
 
