@@ -14,10 +14,6 @@ use Spatie\Permission\Models\Role;
 
 class AuthController extends Controller
 {
-//    public function __construct()
-//    {
-//        $this->middleware('permission:setting');
-//    }
 
     public function checkUnique(Request $request): bool
     {
