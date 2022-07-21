@@ -2,6 +2,7 @@ const Auth = {
     namespaced: true,
     state () {
         return {
+            locale: "en",
             access_token: null,
             permission: [],
             user: {
@@ -9,6 +10,9 @@ const Auth = {
         }
     },
     getters:{
+        Locale(state){
+            return state.locale;
+        },
         isLogin(state){
             return state.access_token;
         },
@@ -17,6 +21,9 @@ const Auth = {
         }
     },
     mutations: {
+        updateLocale(state, locale){
+            state.locale = locale
+        },
         updateUser(state, user){
             state.user = user
         },

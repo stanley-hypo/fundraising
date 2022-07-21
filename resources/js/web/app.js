@@ -1,6 +1,10 @@
 import '../bootstrap';
 import '../../css/app.css'
+import Auth from './store/Auth.js';
 import { createApp } from 'vue'
+import { createI18n } from 'vue-i18n'
+import hk from './lang/hk.json'
+import en from './lang/en.json'
 import webrouter from "./router/webrouter"
 import App from './App.vue'
 import { Quasar } from 'quasar'
@@ -15,7 +19,15 @@ import '@quasar/extras/mdi-v6/mdi-v6.css'
 import '@quasar/extras/fontawesome-v6/fontawesome-v6.css'
 
 
-// axios.defaults.headers.common['Authorization'] = 'Bearer ' + Auth.state.access_token
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + Auth.state.access_token
+const i18n = createI18n({
+    locale: Auth.getters['auth/Locale'],
+    fallbackLocale: 'en',
+    messages: {
+        hk,
+        en
+    }
+})
 
 const app = createApp(App)
 app.use(Quasar, {
@@ -38,5 +50,7 @@ app.use(Quasar, {
     }, // import Quasar plugins and add here
     iconSet: IconSet,
 })
+app.use(i18n)
+app.use(Auth)
 app.use(webrouter)
 app.mount('#app')
