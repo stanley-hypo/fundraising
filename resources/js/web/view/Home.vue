@@ -1,5 +1,6 @@
 <template>
     ok
+    ok2
 </template>
 
 <script>
