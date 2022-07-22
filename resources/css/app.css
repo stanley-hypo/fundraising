@@ -8,9 +8,10 @@
     min-height: 100vh;
 }
 
+/* lewis: donation form styling */
 .donationForm label {
     display: inline-block;
-    width: 150px;
+    width: 100%;
 }
 
 /* lewis: rectangle radio button */
