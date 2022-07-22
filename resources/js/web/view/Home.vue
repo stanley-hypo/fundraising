@@ -1,6 +1,6 @@
 <template>
-    <section>
-    </section>
+    <q-page class="q-pa-md">
+    </q-page>
 </template>
 
 <script>

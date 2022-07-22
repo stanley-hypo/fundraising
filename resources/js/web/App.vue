@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <q-layout
     view="hHh lpR fFf"
     class="bg-grey-1 flex flex-col h-screen justify-between"
@@ -22,6 +23,21 @@
     </q-page-container>
     <pagefooter></pagefooter>
   </q-layout>
+=======
+    <q-layout view="hHh lpR fFf" class="bg-grey-1 flex flex-col h-screen justify-between">
+        <topmenu></topmenu>
+        <q-page-container>
+            <router-view v-slot="{ Component }">
+                <keep-alive :max="15">
+                    <component :is="Component" :key="$route.name" v-if="$route.meta.keepAlive" />
+                </keep-alive>
+                <component :is="Component" :key="$route.name" v-if="!$route.meta.keepAlive" />
+            </router-view>
+            <pagefooter></pagefooter>
+        </q-page-container>
+
+    </q-layout>
+>>>>>>> 96cfd9f6973dbd5b5161ab407ca72ace004287a6
 </template>
 
 <script setup>
