@@ -1,6 +1,6 @@
 <template>
     <q-page class="q-pa-md">
-    </q-page>>
+    </q-page>
 </template>
 
 <script>
