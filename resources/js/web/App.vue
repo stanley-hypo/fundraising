@@ -8,8 +8,9 @@
                 </keep-alive>
                 <component :is="Component" :key="$route.name" v-if="!$route.meta.keepAlive" />
             </router-view>
+            <pagefooter></pagefooter>
         </q-page-container>
-        <pagefooter></pagefooter>
+
     </q-layout>
 </template>
 
