@@ -10,24 +10,17 @@
           <div class="col-3 self-center break-words">
             <label for="">Donation Type</label>
           </div>
-          <div class="rectangleRadio col-9">
-            <input
-              type="radio"
-              id="oneOffDonation"
+          <div class="rectangleRadioGrp col-9">
+            <RectangleRadio
               name="donationType"
               value="oneOffDonation"
-              v-model="donationType"
-              checked
+              title="One-off Donation"
             />
-            <label for="oneOffDonation">One-off Donation</label>
-            <input
-              type="radio"
-              id="monthlyDonation"
+            <RectangleRadio
               name="donationType"
               value="monthlyDonation"
-              v-model="donationType"
+              title="Monthly Donation"
             />
-            <label for="monthlyDonation">Monthly Donation</label>
           </div>
         </div>
         <!-- Donation Amount -->
@@ -77,10 +70,11 @@
 
 <script>
 import { ref } from "vue";
+import RectangleRadio from "../components/Input/RectangleRadio.vue";
 export default {
   props: [],
   name: "Donation",
-  components: {},
+  components: { RectangleRadio },
   data() {
     return {
       donationType: "",
