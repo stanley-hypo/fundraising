@@ -9,7 +9,13 @@ module.exports = {
         extend: {
             /* lewis: customization */
             minWidth: {
+                5: "5rem",
+                6: "6rem",
+                7: "7rem",
                 8: "8rem",
+            },
+            width: {
+                22: "5.5rem",
             },
         },
     },

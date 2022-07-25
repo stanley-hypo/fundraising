@@ -70,13 +70,28 @@
             <div class="w-full sm:w-full lg:w-1/4 self-center break-words">
               <label for="">Name of Donor (Full Name)*</label>
             </div>
-            <div class="w-full sm:w-full md:w-3/4 lg:w-1/3">
-              <q-input
-                outlined
-                v-model="ph"
-                placeholder="e.g. Chan Tai Man"
-                :dense="dense"
-              />
+            <div class="flex w-full sm:w-full md:w-3/4 lg:w-3/4">
+              <div class="mr-5 self-center w-3/5 sm:w-3/4 md:w-3/4 lg:w-2/3">
+                <q-input
+                  outlined
+                  v-model="fullname"
+                  placeholder="e.g. Chan Tai Man"
+                  :dense="dense"
+                />
+              </div>
+              <div class="w-22">
+                <q-select
+                  filled
+                  label="Title"
+                  color="white"
+                  label-color="white"
+                  bg-color="black"
+                  dark
+                  v-model="title"
+                  :options="titleOptions"
+                  :dense="dense"
+                />
+              </div>
             </div>
           </div>
           <!-- Input: Mobile Number -->
@@ -87,7 +102,7 @@
             <div class="w-20 mr-8">
               <q-input
                 outlined
-                v-model="ph"
+                v-model="mobileAreacode"
                 placeholder="e.g. 852"
                 :dense="dense"
               />
@@ -95,7 +110,7 @@
             <div class="min-w-8 w-4/12 sm:w-1/4 md:w-1/4 lg:w-1/4">
               <q-input
                 outlined
-                v-model="ph"
+                v-model="mobile"
                 placeholder="e.g. 87654321"
                 :dense="dense"
               />
@@ -109,7 +124,7 @@
             <div class="mr-auto w-full sm:w-full md:w-3/4 lg:w-1/3">
               <q-input
                 outlined
-                v-model="ph"
+                v-model="email"
                 placeholder="e.g. ChanTaiMan@happyemail.com"
                 :dense="dense"
               />
@@ -119,7 +134,7 @@
             </div>
           </div>
           <!-- Input: Address -->
-          <div class="flex items-center mb-5">
+          <div class="flex items-center">
             <!-- Input: Adress (line 1) -->
             <div class="w-full sm:w-full lg:w-1/4 self-center break-words">
               <label for="">Address</label>
@@ -127,7 +142,7 @@
             <div class="mb-5 w-full sm:w-full md:w-3/4 lg:w-3/4">
               <q-input
                 outlined
-                v-model="ph"
+                v-model="address1"
                 placeholder=" Room/Flat/Floor e.g. 18A"
                 :dense="dense"
               />
@@ -139,7 +154,7 @@
             <div class="mb-5 w-full sm:w-full md:w-3/4 lg:w-3/4">
               <q-input
                 outlined
-                v-model="ph"
+                v-model="address2"
                 placeholder="Building/Estate e.g. Block F, Pamela Youde Nethersole Eastern Hospital"
                 :dense="dense"
               />
@@ -148,11 +163,40 @@
             <div
               class="w-full sm:w-full lg:w-1/4 self-center break-words"
             ></div>
-            <div class="w-full sm:w-full md:w-3/4 lg:w-3/4">
+            <div class="mb-5 w-full sm:w-full md:w-3/4 lg:w-3/4">
               <q-input
                 outlined
-                v-model="ph"
+                v-model="address3"
                 placeholder="Street No. / Street Name e.g. 3 Lok Man Road"
+                :dense="dense"
+              />
+            </div>
+            <div
+              class="w-full sm:w-full lg:w-1/4 self-center break-words"
+            ></div>
+            <div class="min-w-6 mr-8 mb-5">
+              <q-select
+                filled
+                label="Area"
+                color="white"
+                label-color="white"
+                bg-color="black"
+                dark
+                v-model="area"
+                :options="areaOptions"
+                :dense="dense"
+              />
+            </div>
+            <div class="mb-5 min-w-7">
+              <q-select
+                filled
+                label="District"
+                color="white"
+                label-color="white"
+                bg-color="black"
+                dark
+                v-model="district"
+                :options="districtOptions"
                 :dense="dense"
               />
             </div>
@@ -166,7 +210,7 @@
               <q-input
                 outlined
                 type="textarea"
-                v-model="ph"
+                v-model="remark"
                 placeholder=""
                 :dense="dense"
               />
@@ -215,6 +259,12 @@ export default {
       text: ref(""),
       ph: ref(""),
       dense: ref(true),
+      title: ref(null),
+      area: ref(null),
+      district: ref(null),
+      titleOptions: ["Mr", "Miss", "Ms", "Mrs", "Dr", "Prof"],
+      areaOptions: ["WONG NAI CHUNG GAP", "Miss", "Ms", "Mrs", "Dr", "Prof"],
+      districtOptions: ["NEW TERRITORIES", "Miss", "Ms", "Mrs", "Dr", "Prof"],
     };
   },
 };
