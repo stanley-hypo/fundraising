@@ -1,9 +1,18 @@
 <template>
   <q-page class="q-pa-md">
     <div
-      class="max-w-5xl p-10 bg-white mx-auto my-20 rounded-md drop-shadow-lg"
+      class="
+        max-w-5xl
+        p-10
+        bg-[#fffffa]
+        mx-auto
+        my-20
+        rounded-md
+        drop-shadow-lg
+      "
     >
       <form class="donationForm divide-y-2">
+        <!-- Donation -->
         <div class="donation">
           <h5 class="text-center my-5">Donation</h5>
           <!-- Donation Type -->
@@ -63,7 +72,7 @@
           </div>
         </div>
         <!-- Donor Information -->
-        <div class="donationInformation mb-4">
+        <div class="mb-4">
           <h5 class="text-center my-5">Donor Information</h5>
           <!-- Input: Name of Donor -->
           <div class="flex items-center mb-5">
@@ -102,6 +111,7 @@
             <div class="w-20 mr-8">
               <q-input
                 outlined
+                type="tel"
                 v-model="mobileAreacode"
                 placeholder="e.g. 852"
                 :dense="dense"
@@ -110,6 +120,7 @@
             <div class="min-w-8 w-4/12 sm:w-1/4 md:w-1/4 lg:w-1/4">
               <q-input
                 outlined
+                type="tel"
                 v-model="mobile"
                 placeholder="e.g. 87654321"
                 :dense="dense"
@@ -136,7 +147,7 @@
           <!-- Input: Address -->
           <div class="flex items-center">
             <!-- Input: Adress (line 1) -->
-            <div class="w-full sm:w-full lg:w-1/4 self-center break-words">
+            <div class="mb-5 w-full sm:w-full lg:w-1/4 self-center break-words">
               <label for="">Address</label>
             </div>
             <div class="mb-5 w-full sm:w-full md:w-3/4 lg:w-3/4">
@@ -203,7 +214,7 @@
           </div>
           <!-- Input: Remark -->
           <div class="flex items-center mb-5">
-            <div class="w-full sm:w-full lg:w-1/4 self-center break-words">
+            <div class="self-start mt-2 w-full sm:w-full lg:w-1/4 break-words">
               <label for="">Remark</label>
             </div>
             <div class="mb-5 w-full sm:w-full md:w-3/4 lg:w-3/4">
@@ -211,30 +222,108 @@
                 outlined
                 type="textarea"
                 v-model="remark"
-                placeholder=""
                 :dense="dense"
               />
             </div>
           </div>
         </div>
         <!-- Payment Method -->
-        <div class="donationInformation mb-4">
+        <div class="mb-4">
           <h5 class="text-center my-5">Payment Method</h5>
           <div class="">
             <div class="flex items-center mb-5">
-              <div class="w-1/4 self-center break-words">
+              <div
+                class="
+                  self-start
+                  mb-3
+                  w-full
+                  sm:w-full
+                  md:w-1/4
+                  lg:w-1/4
+                  break-words
+                "
+              >
                 <label for="">Online</label>
               </div>
-              <div class="w-3/4">
-                <div>Square</div>
+              <div
+                class="
+                  justify-items-center
+                  w-full
+                  sm:w-full
+                  md:w-3/4
+                  lg:w-3/4
+                  grid grid-cols-2
+                  sm:grid-cols-2
+                  md:grid-cols-3
+                  lg:grid-cols-3
+                  gap-4
+                "
+              >
+                <q-img
+                  :src="url"
+                  spinner-color="white"
+                  style="height: 140px; max-width: 150px"
+                />
+                <q-img
+                  :src="url"
+                  spinner-color="white"
+                  style="height: 140px; max-width: 150px"
+                />
+                <q-img
+                  :src="url"
+                  spinner-color="white"
+                  style="height: 140px; max-width: 150px"
+                />
+                <q-img
+                  :src="url"
+                  spinner-color="white"
+                  style="height: 140px; max-width: 150px"
+                />
+                <q-img
+                  :src="url"
+                  spinner-color="white"
+                  style="height: 140px; max-width: 150px"
+                />
+                <q-img
+                  :src="url"
+                  spinner-color="white"
+                  style="height: 140px; max-width: 150px"
+                />
+                <q-img
+                  :src="url"
+                  spinner-color="white"
+                  style="height: 140px; max-width: 150px"
+                />
+                <q-img
+                  :src="url"
+                  spinner-color="white"
+                  style="height: 140px; max-width: 150px"
+                />
               </div>
             </div>
           </div>
         </div>
         <!-- Checkbox -->
-        <div class="donationInformation mb-4">
-          <div>check</div>
-          <div>check</div>
+        <div class="flex items-center mb-5 mt-4">
+          <div
+            class="
+              self-start
+              mb-3
+              w-full
+              sm:w-full
+              md:w-1/4
+              lg:w-1/4
+              break-words
+            "
+          ></div>
+          <div class="mt-4 w-3/4 flex flex-col">
+            <q-checkbox v-model="receipt" label="Need Receipt" />
+            <q-checkbox
+              v-model="interested"
+              label="Please tick the box if you are interested in receiving the latest news of Playright Courses/Activities and becoming our Friends of Playright/Playright Volunteers"
+            />
+          </div>
+          <q-btn label="Submit" type="submit" color="primary" />
         </div>
       </form>
     </div>
@@ -254,17 +343,27 @@ export default {
     };
   },
   setup() {
+    const url = ref("https://placeimg.com/500/300/nature");
     return {
-      shape: ref(""),
-      text: ref(""),
-      ph: ref(""),
       dense: ref(true),
+      url,
+      // v-model value
+      fullname: ref(""),
+      mobileAreacode: ref(""),
+      mobile: ref(""),
+      email: ref(""),
+      address1: ref(""),
+      address2: ref(""),
+      address3: ref(""),
       title: ref(null),
       area: ref(null),
       district: ref(null),
+      remark: ref(""),
       titleOptions: ["Mr", "Miss", "Ms", "Mrs", "Dr", "Prof"],
       areaOptions: ["WONG NAI CHUNG GAP", "Miss", "Ms", "Mrs", "Dr", "Prof"],
-      districtOptions: ["NEW TERRITORIES", "Miss", "Ms", "Mrs", "Dr", "Prof"],
+      districtOptions: ["HONG_KONG", "KOWLOON", "NEW TERRITORIES", "LANTAU"],
+      receipt: ref(false),
+      interested: ref(false),
     };
   },
 };
