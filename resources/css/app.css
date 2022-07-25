@@ -16,10 +16,15 @@
 
 /* lewis: rectangle radio button */
 .rectangleRadioGrp {
-    margin: 10px 0px;
+    margin: 5px 0px;
     display: flex;
-
+    flex-wrap: wrap;
 }
+
+.rectangleRadioContainer {
+  margin-bottom: 30px;
+}
+
 .rectangleRadioInput {
   opacity: 0;
   position: fixed;
@@ -43,3 +48,4 @@
   border-color: #000;
   color: #fff;
 }
+

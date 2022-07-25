@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="rectangleRadioContainer">
     <input
       type="radio"
       :id="value"
       class="rectangleRadioInput"
       :name="name"
       :value="value"
-      v-model="donationType"
+      :v-model="name"
       checked
     />
     <label :for="value" class="rectangleRadioLabel" @click="fk()"
@@ -18,7 +18,6 @@
 <script>
 export default {
   props: ["name", "value", "title"],
-  methods: {},
 };
 </script>
 
