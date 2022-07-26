@@ -9,7 +9,7 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/css/admin.css',
                 'resources/js/web/app.js',
-                'resources/js/admin/app.js',
+                'resources/js/admin/admin.js',
             ],
             refresh: true,
         }),

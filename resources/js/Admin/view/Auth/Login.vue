@@ -35,7 +35,6 @@
 
 <script>
 import AdminAuthService from "../../service/AdminAuthService";
-import {NotifyService} from "../../service/Service";
 
 export default {
     props:[],
@@ -69,9 +68,7 @@ export default {
                         'auth/updateAdminToken',
                         response.access_token
                     )
-
                     window.location.href = this.$route.query.redirect??'/admin';
-
                 })
         },
     }

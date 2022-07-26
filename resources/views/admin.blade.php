@@ -33,6 +33,6 @@
 <div id="app">
 
 </div>
-@vite(['resources/js/admin/app.js'])
+@vite(['resources/js/admin/admin.js'])
 </body>
 </html>

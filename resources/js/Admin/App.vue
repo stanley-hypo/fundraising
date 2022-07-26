@@ -30,7 +30,7 @@ export default {
                 this.$store.commit('auth/updateAdminUser', response.result)
             })
                 .catch((error) =>{
-                    //無效登入
+                    // 無效登入
                     if(error.response.status === 401){
                         NotifyService.commitNotify( { color: 'negative', message: '帳號已登出', dangerous: 'check', position: '' });
                         this.$store.dispatch('auth/logout')
