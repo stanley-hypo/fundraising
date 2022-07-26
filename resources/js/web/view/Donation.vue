@@ -11,7 +11,7 @@
         drop-shadow-lg
       "
     >
-      <form class="donationForm divide-y-2">
+      <q-form class="donationForm divide-y-2" @submit.prevent="handleSubmit">
         <!-- Donation -->
         <div class="donation">
           <h5 class="text-center my-5">Donation</h5>
@@ -75,8 +75,8 @@
         <div class="mb-4">
           <h5 class="text-center my-5">Donor Information</h5>
           <!-- Input: Name of Donor -->
-          <div class="flex items-center mb-5">
-            <div class="w-full sm:w-full lg:w-1/4 self-center break-words">
+          <div class="flex items-center mb-1">
+            <div class="mb-5 w-full sm:w-full lg:w-1/4 self-center break-words">
               <label for=""
                 >{{ $t("full_name") }}<a class="text-red-600">*</a></label
               >
@@ -88,6 +88,10 @@
                   v-model="fullname"
                   placeholder="e.g. Chan Tai Man"
                   :dense="dense"
+                  :rules="[
+                    (val) =>
+                      (val !== null && val !== '') || 'Field must be filled',
+                  ]"
                 />
               </div>
               <div class="w-22">
@@ -106,8 +110,8 @@
             </div>
           </div>
           <!-- Input: Mobile Number -->
-          <div class="flex items-center mb-5">
-            <div class="w-full sm:w-full lg:w-1/4 self-center break-words">
+          <div class="flex items-center mb-1">
+            <div class="mb-4 w-full sm:w-full lg:w-1/4 self-center break-words">
               <label for=""
                 >{{ $t("mobile_number") }}<a class="text-red-600">*</a></label
               >
@@ -119,6 +123,10 @@
                 v-model="mobileAreacode"
                 placeholder="e.g. 852"
                 :dense="dense"
+                :rules="[
+                  (val) =>
+                    (val !== null && val !== '') || 'Field must be filled',
+                ]"
               />
             </div>
             <div class="min-w-8 w-4/12 sm:w-1/4 md:w-1/4 lg:w-1/4">
@@ -128,12 +136,16 @@
                 v-model="mobile"
                 placeholder="e.g. 87654321"
                 :dense="dense"
+                :rules="[
+                  (val) =>
+                    (val !== null && val !== '') || 'Field must be filled',
+                ]"
               />
             </div>
           </div>
           <!-- Input: Email -->
-          <div class="flex items-center mb-5">
-            <div class="w-full sm:w-full lg:w-1/4 self-center break-words">
+          <div class="flex items-center mb-1">
+            <div class="mb-4 w-full sm:w-full lg:w-1/4 self-center break-words">
               <label for=""
                 >{{ $t("email") }}<a class="text-red-600">*</a></label
               >
@@ -144,9 +156,13 @@
                 v-model="email"
                 placeholder="e.g. ChanTaiMan@happyemail.com"
                 :dense="dense"
+                :rules="[
+                  (val) =>
+                    (val !== null && val !== '') || 'Field must be filled',
+                ]"
               />
             </div>
-            <div class="mr-auto">
+            <div class="mb-5 mr-auto">
               Confirmation email will be sent to this email addrss
             </div>
           </div>
@@ -363,16 +379,25 @@
             "
           ></div>
           <div class="grid mt-4 w-3/4">
-            <q-checkbox v-model="receipt" :label="$t('donation_checkbox1')" />
+            <q-checkbox v-model="receipt" :label="$t('donation_checkbox1')">
+              <q-item-label caption>{{
+                $t("donation_checkbox1_caption")
+              }}</q-item-label>
+            </q-checkbox>
 
             <q-checkbox
               v-model="interested"
               :label="$t('donation_checkbox2')"
             />
+            <q-btn
+              label="Submit"
+              type="submit"
+              color="primary"
+              class="w-fit justify-self-end mt-8"
+            />
           </div>
-          <q-btn label="Submit" type="submit" color="primary" />
         </div>
-      </form>
+      </q-form>
     </div>
   </q-page>
 </template>
@@ -386,7 +411,7 @@ export default {
   components: { RectangleRadio },
   data() {
     return {
-      donationType: "",
+      // donationType: "",
     };
   },
   setup() {
@@ -395,6 +420,7 @@ export default {
       dense: ref(true),
       url,
       // v-model value
+      donationType: ref(""),
       fullname: ref(""),
       mobileAreacode: ref(""),
       mobile: ref(""),
@@ -412,6 +438,11 @@ export default {
       receipt: ref(false),
       interested: ref(false),
     };
+  },
+  methods: {
+    handleSubmit() {
+      console.log(this.$fullname.toString());
+    },
   },
 };
 </script>

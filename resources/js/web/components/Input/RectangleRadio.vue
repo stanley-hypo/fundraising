@@ -7,7 +7,6 @@
       :name="name"
       :value="value"
       :v-model="name"
-      checked
     />
     <label :for="value" class="rectangleRadioLabel" @click="fk()"
       >{{ title }}

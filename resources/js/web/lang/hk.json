@@ -11,5 +11,6 @@
     "offline":"線下付款",
     "payment_method":"付款方法",
     "donation_checkbox1":"需要收據",
+    "donation_checkbox1_caption":"捐款 HKD100或以上，可申請免稅收據",
     "donation_checkbox2":"閣下如欲收取智樂兒童遊樂協會的最新課程及活動資訊，以及/或成為本會智樂之友/智樂義工，請點選方格。"
 }

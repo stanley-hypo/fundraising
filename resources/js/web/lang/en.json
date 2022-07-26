@@ -3,7 +3,7 @@
     "donation_type":"Donation Type",
     "donation_amount":"Donation Amount (HKD)",
     "full_name":"Name of Donor (Full Name)",
-    "mobile_number":"Moblie number",
+    "mobile_number":"Moblie Number",
     "email":"Email",
     "address":"Address",
     "remark":"Remark",
@@ -11,6 +11,7 @@
     "offline":"Offline",
     "payment_method":"Payment Method",
     "donation_checkbox1":"Need Receipt",
+    "donation_checkbox1_caption":"Donation above HK$100 is tax-deducable",
     "donation_checkbox2":"Please tick the box if you are interested in receiving the latest news of Playright Course/Activities and becoming our Friends of Playright/Playright Volunteers"
 
 }
