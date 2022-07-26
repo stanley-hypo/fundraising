@@ -18,7 +18,7 @@
                 font-family: 'Noto Sans HK', sans-serif;
             }
         </style>
-        <link href="{{url('assets/css/quasar.css')}}" rel="stylesheet">
+        <link href="{{url('assets/css/qstyle.css')}}" rel="stylesheet">
     </head>
     <body>
         <div id="app">

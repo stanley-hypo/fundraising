@@ -7,7 +7,7 @@
                     <q-card-section>
                         <q-card-section>
                             <div class="flex flex-wrap justify-between gap-2">
-                                <div class="text-h6">職員資料</div>
+                                <div class="text-h6">User Information</div>
                                 <q-btn label="Submit" type="submit" text-right color="primary" size="md"  />
                             </div>
                         </q-card-section>
@@ -19,8 +19,8 @@
                                     lazy-rules
                                     filled
                                     outlined
-                                    label="姓名"
-                                    :rules="[val => !!val ||  val?.length > 2 || '必填項目',]"
+                                    label="Name"
+                                    :rules="[val => !!val ||  val?.length > 2 || 'Field must be filled',]"
                                 >
                                 </q-input>
                                 <q-input
@@ -28,22 +28,22 @@
                                     lazy-rules
                                     filled
                                     outlined
-                                    label="電郵"
+                                    label="Email"
                                     type="email"
-                                    :rules="[val => !!val || '必填項目',]"
+                                    :rules="[val => !!val || 'Field must be filled',]"
                                 >
                                 </q-input>
 
                                 <q-select
-                                    label="職級"
+                                    label="Role"
                                     v-model="user.role"
                                     filled outlined
                                     :options="roles"
                                     lazy-rules
-                                    :rules="[val => !!val || '必填項目',]"
+                                    :rules="[val => !!val || 'Field must be filled',]"
                                 >
                                 </q-select>
-                                <q-checkbox :true-value="1" :false-value="0" v-model="user.active" label="生效"></q-checkbox>
+                                <q-checkbox size="xl" :true-value="1" :false-value="0" v-model="user.active" label="Active"></q-checkbox>
                             </div>
                         </q-card-section>
 
@@ -65,34 +65,32 @@ import AdminAuthService from "../../service/AdminAuthService";
 import {NotifyService} from '../../service/Service'
 
 export default {
-    components:{
+    components: {
         Header,
     },
     data() {
         return {
             myHeader: {
-                title: '修改職員',
+                title: 'Edit User',
                 navBar: [
                     {
-                        title: "職員列表",
+                        title: "User List",
                         url: "/admin/user",
                     },
                     {
-                        title: "檢視職員",
+                        title: "View User",
                         url: "/admin/user_view/"+this.$route.params.id,
                     },
                     {
-                        title: "修改職員"
+                        title: "Edit User"
                     }
                 ],
             },
             user: {
                 name: '',
                 email: '',
-
                 role: '',
                 permissions: [],
-
                 active: false,
             },
             roles: [],
@@ -103,6 +101,7 @@ export default {
     },
     watch: {
     },
+
     created() {
         //get role
         // ********
@@ -129,7 +128,8 @@ export default {
             }
         })
     },
-    methods:{
+
+    methods: {
         // roleOnChange(role){
         //     let self = this;
         //     this.user.role = role;
@@ -141,7 +141,6 @@ export default {
         // },
 
         onSubmit() {
-
             AdminAuthService.update({
                 id: this.user.id,
                 name: this.user.name,

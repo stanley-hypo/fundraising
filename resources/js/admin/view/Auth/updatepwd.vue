@@ -7,7 +7,7 @@
                     <q-card-section>
                         <q-card-section>
                             <div class="flex flex-wrap justify-between gap-2">
-                                <div class="text-h6">職員資料</div>
+                                <div class="text-h6">New Password</div>
                             </div>
                         </q-card-section>
 
@@ -18,7 +18,7 @@
                                     lazy-rules
                                     filled
                                     outlined
-                                    label="新密碼"
+                                    label="New Password"
                                     type="password"
                                     :rules="[
                                         val => val.length > 5 || '必填項目',
@@ -31,7 +31,7 @@
                                     lazy-rules
                                     filled
                                     outlined
-                                    label="確定新密碼"
+                                    label="Confirm New Password"
                                     type="password"
                                     :rules="[
                                         val => val.length > 5 || '必填項目',
@@ -66,14 +66,14 @@ export default {
     data() {
         return {
             myHeader: {
-                title: '更新密碼',
+                title: 'Update Password',
                 navBar: [
                     {
-                        title: "檢視職員",
+                        title: "User View",
                         url: "/admin/user_view/"+this.$route.params.id,
                     },
                     {
-                        title: "更新密碼"
+                        title: "Update Password"
                     }
                 ],
             },

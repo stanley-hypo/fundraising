@@ -80,7 +80,7 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response([ 'success' => false, 'message' => 'Validate Failed #USER_ADD_ERR01' ], 422);
+            return response([ 'success' => false, 'message' => 'Validate Failed '.$validator->errors() ], 422);
         }
 
         $input['email'] = strtolower($input['email']);

@@ -14,7 +14,7 @@ export default {
             .post(import.meta.env.VITE_APP_URL + 'adminapi/register', credentials)
             .then(response => response.data)
             .catch(function (error) {
-                NotifyService.commitNotify( { color: 'negative', message: error??'Error', dangerous: 'check', position: '' });
+                NotifyService.commitNotify( { color: 'negative', message: error?.message??'Error', dangerous: 'check', position: '' });
             });
     },
     update(credentials) {
@@ -22,7 +22,7 @@ export default {
             .post(import.meta.env.VITE_APP_URL + 'adminapi/user/update', credentials)
             .then(response => response.data)
             .catch(function (error) {
-                NotifyService.commitNotify( { color: 'negative', message: error??'Error', dangerous: 'check', position: '' });
+                NotifyService.commitNotify( { color: 'negative', message: error?.message??'Error', dangerous: 'check', position: '' });
             });
     },
     updatepwd(credentials) {
@@ -30,13 +30,16 @@ export default {
             .post(import.meta.env.VITE_APP_URL + 'adminapi/user/updatepwd', credentials)
             .then(response => response.data)
             .catch(function (error) {
-                NotifyService.commitNotify( { color: 'negative', message: error??'Error', dangerous: 'check', position: '' });
+                NotifyService.commitNotify( { color: 'negative', message: error?.message??'Error', dangerous: 'check', position: '' });
             });
     },
     login(credentials) {
         return axios
             .post(import.meta.env.VITE_APP_URL + 'adminapi/login', credentials)
-            .then(response => response.data);
+            .then(response => response.data)
+            .catch(function (error) {
+                NotifyService.commitNotify( { color: 'negative', message: error?.message??'Error', dangerous: 'check', position: '' });
+            });
     },
     logout() {
         return axios
@@ -48,7 +51,7 @@ export default {
             .post(import.meta.env.VITE_APP_URL + 'adminapi/user/show', credentials)
             .then(response => response.data)
             .catch(function (error) {
-                NotifyService.commitNotify( { color: 'negative', message: error.response?.data?.message??'Error', dangerous: 'check', position: '' });
+                NotifyService.commitNotify( { color: 'negative', message: error?.message??'Error', dangerous: 'check', position: '' });
             });
     },
     //only get 自己的info

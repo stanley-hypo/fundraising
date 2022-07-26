@@ -399,6 +399,9 @@
 <script>
 import { ref } from "vue";
 import RectangleRadio from "../components/Input/RectangleRadio.vue";
+import { useRoute, useRouter } from "vue-router";
+import router from "../router/webrouter";
+
 export default {
   props: [],
   name: "Donation",
@@ -449,11 +452,18 @@ export default {
   },
   methods: {
     handleSubmit() {
-      console.log(this.donationType);
-      // console.log(typeof this.donationAmount);
-    },
-    onEnlargeText() {
-      alert("enlarging text");
+      router.push({
+        name: "donateComfirm",
+        params: {
+          name: this.fullname.valueOf(),
+          ccc: this.mobileAreacode.valueOf(),
+          phone: this.mobile.valueOf(),
+          email: this.email.valueOf(),
+          address1: this.address1.valueOf(),
+          address2: this.address2.valueOf(),
+          address3: this.address3.valueOf(),
+        },
+      });
     },
   },
 };

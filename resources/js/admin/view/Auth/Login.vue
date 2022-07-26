@@ -1,7 +1,7 @@
 <template>
     <div class="relative flex flex-col justify-center min-h-screen overflow-hidden px-4 sm:px-6 lg:px-8" v-if="!$store.getters['auth/isLogin']">
         <div class="w-full p-6 m-auto bg-white border-t border-blue-600 rounded shadow-lg shadow-blue-800/50 lg:max-w-md">
-            <h1 class="text-3xl font-semibold text-center text-blue-700">Company Name <br />XXXXXX</h1>
+            <h1 class="text-3xl font-semibold text-center text-blue-700">捐款職員<br />登入</h1>
             <q-form @submit="login" class="mt-6" >
                 <div>
                     <q-input
@@ -49,36 +49,27 @@ export default {
     },
     created() {
         if(this.$store.getters['auth/isLogin']){
-            //stanley must use this
             window.location.href = this.$route.query.redirect??'/admin';
         }
-        // console.log(import.meta.env.VITE_APP_URL)
-        // console.log(this.$store.getters['auth/isLogin'])
-
-        // this.$store.state.user.token = "HIHI"
-        // console.log(this.$store.state.user)
     },
     components: {
 
     },
     methods:{
-        async login() {
-            try {
-                const credentials = this.loginuser;
-                const response = await AdminAuthService.login(credentials);
-                await this.$store.commit(
-                    'auth/updateAdminUser',
-                    response.user
-                )
-                await this.$store.commit(
-                    'auth/updateAdminToken',
-                    response.access_token
-                )
-                //stanley must use this
-                window.location.href = this.$route.query.redirect??'/admin';
-            } catch (error) {
-                console.log(error.response.data.msg);
-            }
+        login() {
+            const credentials = this.loginuser;
+            AdminAuthService.login(credentials)
+                .then(response=>{
+                    this.$store.commit(
+                        'auth/updateAdminUser',
+                        response.user
+                    )
+                    this.$store.commit(
+                        'auth/updateAdminToken',
+                        response.access_token
+                    )
+                    window.location.href = this.$route.query.redirect??'/admin';
+                })
         },
     }
 }
