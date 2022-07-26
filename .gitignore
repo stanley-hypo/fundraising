@@ -4,6 +4,8 @@
 /public/storage
 /storage/*.key
 /vendor
+package.json
+package-lock.json
 .env
 .env.backup
 .phpunit.result.cache

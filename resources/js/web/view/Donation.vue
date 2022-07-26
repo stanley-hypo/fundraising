@@ -21,7 +21,7 @@
               <label for="">{{ $t("donation_type") }}</label>
             </div>
             <div class="rectangleRadioGrp w-3/4">
-              <RectangleRadio
+              <!-- <RectangleRadio
                 name="donationType"
                 value="oneOffDonation"
                 :title="$t('donation_option1')"
@@ -30,7 +30,39 @@
                 name="donationType"
                 value="monthlyDonation"
                 :title="$t('donation_option2')"
-              />
+              /> -->
+              <div class="rectangleRadioContainer">
+                <input
+                  type="radio"
+                  id="oneOffDonation"
+                  class="rectangleRadioInput"
+                  name="donationType"
+                  value="oneOffDonation"
+                  v-model="donationType"
+                />
+                <label
+                  for="oneOffDonation"
+                  class="rectangleRadioLabel"
+                  @click="fk()"
+                  >{{ $t("donation_option1") }}
+                </label>
+              </div>
+              <div class="rectangleRadioContainer">
+                <input
+                  type="radio"
+                  id="monthlyDonation"
+                  class="rectangleRadioInput"
+                  name="donationType"
+                  value="monthlyDonation"
+                  v-model="donationType"
+                />
+                <label
+                  for="monthlyDonation"
+                  class="rectangleRadioLabel"
+                  @click="fk()"
+                  >{{ $t("donation_option2") }}
+                </label>
+              </div>
             </div>
           </div>
           <!-- Donation Amount -->
@@ -39,34 +71,12 @@
               <label for="">{{ $t("donation_amount") }}</label>
             </div>
             <div class="rectangleRadioGrp w-3/4">
-              <RectangleRadio name="donationAmount" value="200" title="$200" />
-              <RectangleRadio name="donationAmount" value="400" title="$400" />
-              <RectangleRadio name="donationAmount" value="600" title="$600" />
-              <RectangleRadio name="donationAmount" value="800" title="$800" />
               <RectangleRadio
+                v-for="data in donationAmountData"
+                :key="data.value"
                 name="donationAmount"
-                value="1000"
-                title="$1000"
-              />
-              <RectangleRadio
-                name="donationAmount"
-                value="3000"
-                title="$3000"
-              />
-              <RectangleRadio
-                name="donationAmount"
-                value="5000"
-                title="$5000"
-              />
-              <RectangleRadio
-                name="donationAmount"
-                value="10000"
-                title="$10000"
-              />
-              <RectangleRadio
-                name="donationAmount"
-                value="others"
-                :title="$t('amount_other')"
+                :value="data.value"
+                :title="data.title"
               />
             </div>
           </div>
@@ -88,10 +98,6 @@
                   v-model="fullname"
                   :placeholder="$t('ph_fullname')"
                   :dense="dense"
-                  :rules="[
-                    (val) =>
-                      (val !== null && val !== '') || 'Field must be filled',
-                  ]"
                 />
               </div>
               <div class="w-22">
@@ -123,10 +129,6 @@
                 v-model="mobileAreacode"
                 placeholder="e.g. 852"
                 :dense="dense"
-                :rules="[
-                  (val) =>
-                    (val !== null && val !== '') || 'Field must be filled',
-                ]"
               />
             </div>
             <div class="min-w-8 w-4/12 sm:w-1/4 md:w-1/4 lg:w-1/4">
@@ -136,10 +138,6 @@
                 v-model="mobile"
                 placeholder="e.g. 87654321"
                 :dense="dense"
-                :rules="[
-                  (val) =>
-                    (val !== null && val !== '') || 'Field must be filled',
-                ]"
               />
             </div>
           </div>
@@ -156,10 +154,6 @@
                 v-model="email"
                 placeholder="e.g. ChanTaiMan@happyemail.com"
                 :dense="dense"
-                :rules="[
-                  (val) =>
-                    (val !== null && val !== '') || 'Field must be filled',
-                ]"
               />
             </div>
             <div class="mb-5 mr-auto">
@@ -412,6 +406,7 @@ export default {
   data() {
     return {
       // donationType: "",
+      // donationAmount: "",
     };
   },
   setup() {
@@ -421,6 +416,7 @@ export default {
       url,
       // v-model value
       donationType: ref(""),
+      donationAmount: ref(""),
       fullname: ref(""),
       mobileAreacode: ref(""),
       mobile: ref(""),
@@ -437,11 +433,27 @@ export default {
       districtOptions: ["HONG_KONG", "KOWLOON", "NEW TERRITORIES", "LANTAU"],
       receipt: ref(false),
       interested: ref(false),
+
+      //
+      donationAmountData: [
+        { name: "donationAmount ", value: "200", title: "$200" },
+        { name: "donationAmount ", value: "400", title: "$400" },
+        { name: "donationAmount ", value: "600", title: "$600" },
+        { name: "donationAmount ", value: "800", title: "$800" },
+        { name: "donationAmount ", value: "3000", title: "$3000" },
+        { name: "donationAmount ", value: "5000", title: "$5000" },
+        { name: "donationAmount ", value: "10000", title: "$10000" },
+        { name: "donationAmount ", value: "other", title: "Others" },
+      ],
     };
   },
   methods: {
     handleSubmit() {
-      console.log(this.$fullname.toString());
+      console.log(this.donationType);
+      // console.log(typeof this.donationAmount);
+    },
+    onEnlargeText() {
+      alert("enlarging text");
     },
   },
 };

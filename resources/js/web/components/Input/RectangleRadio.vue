@@ -8,15 +8,14 @@
       :value="value"
       :v-model="name"
     />
-    <label :for="value" class="rectangleRadioLabel" @click="fk()"
-      >{{ title }}
-    </label>
+    <label :for="value" class="rectangleRadioLabel">{{ title }} </label>
   </div>
 </template>
 
 <script>
 export default {
   props: ["name", "value", "title"],
+  methods: {},
 };
 </script>
 
