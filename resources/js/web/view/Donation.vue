@@ -24,12 +24,12 @@
               <RectangleRadio
                 name="donationType"
                 value="oneOffDonation"
-                title="One-off Donation"
+                :title="$t('donation_option1')"
               />
               <RectangleRadio
                 name="donationType"
                 value="monthlyDonation"
-                title="Monthly Donation"
+                :title="$t('donation_option2')"
               />
             </div>
           </div>
@@ -66,7 +66,7 @@
               <RectangleRadio
                 name="donationAmount"
                 value="others"
-                title="Others"
+                :title="$t('amount_other')"
               />
             </div>
           </div>
@@ -176,7 +176,7 @@
               <q-input
                 outlined
                 v-model="address1"
-                placeholder=" Room/Flat/Floor e.g. 18A"
+                :placeholder="$t('ph_address1')"
                 :dense="dense"
               />
             </div>
@@ -188,7 +188,7 @@
               <q-input
                 outlined
                 v-model="address2"
-                placeholder="Building/Estate e.g. Block F, Pamela Youde Nethersole Eastern Hospital"
+                :placeholder="$t('ph_address2')"
                 :dense="dense"
               />
             </div>
@@ -200,7 +200,7 @@
               <q-input
                 outlined
                 v-model="address3"
-                placeholder="Street No. / Street Name e.g. 3 Lok Man Road"
+                :placeholder="$t('ph_address3')"
                 :dense="dense"
               />
             </div>
@@ -390,9 +390,9 @@
               :label="$t('donation_checkbox2')"
             />
             <q-btn
-              label="Submit"
+              :label="$t('submit')"
               type="submit"
-              color="primary"
+              color="black"
               class="w-fit justify-self-end mt-8"
             />
           </div>
