@@ -405,6 +405,10 @@
 <script>
 import { ref } from "vue";
 import RectangleRadio from "../components/Input/RectangleRadio.vue";
+import { useRoute,useRouter } from 'vue-router';
+import router from "../router/webrouter";
+
+
 export default {
   props: [],
   name: "Donation",
@@ -415,6 +419,7 @@ export default {
     };
   },
   setup() {
+
     const url = ref("https://placeimg.com/500/300/nature");
     return {
       dense: ref(true),
@@ -441,7 +446,16 @@ export default {
   },
   methods: {
     handleSubmit() {
-      console.log(this.$fullname.toString());
+
+        router.push({ name: 'donateComfirm', params: {
+                name:this.fullname.valueOf(),
+                ccc:this.mobileAreacode.valueOf(),
+                phone:this.mobile.valueOf(),
+                email:this.email.valueOf(),
+                address1:this.address1.valueOf(),
+                address2:this.address2.valueOf(),
+                address3:this.address3.valueOf(),
+            } })
     },
   },
 };
