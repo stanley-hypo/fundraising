@@ -5,10 +5,19 @@ module.exports = {
         "./resources/**/*.js",
         "./resources/**/*.vue",
     ],
-  theme: {
-    extend: {},
-  },
-  plugins: [
-      require('tw-elements/dist/plugin')
-  ],
-}
+    theme: {
+        extend: {
+            /* lewis: customization */
+            minWidth: {
+                5: "5rem",
+                6: "6rem",
+                7: "7rem",
+                8: "8rem",
+            },
+            width: {
+                22: "5.5rem",
+            },
+        },
+    },
+    plugins: [require("tw-elements/dist/plugin")],
+};
