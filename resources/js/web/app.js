@@ -9,7 +9,7 @@ import webrouter from "./router/webrouter"
 import App from './App.vue'
 import {Dialog, Loading, Notify, Quasar} from 'quasar'
 import IconSet from 'quasar/icon-set/fontawesome-v6'
-import 'tw-elements';
+// import 'tw-elements';
 // Import icon libraries
 import '@quasar/extras/material-icons/material-icons.css'
 import '@quasar/extras/material-symbols-outlined/material-symbols-outlined.css'
