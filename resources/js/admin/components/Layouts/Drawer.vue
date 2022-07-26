@@ -104,7 +104,16 @@
             >
               <q-item-section>權限組別</q-item-section>
             </q-item>
+              <q-item
+                  to="/admin/setting"
+                  clickable
+                  v-ripple
+                  v-if="$store.getters['auth/isAdmin']"
+              >
+                  <q-item-section>系統設定</q-item-section>
+              </q-item>
           </q-list>
+
         </q-expansion-item>
       </q-list>
     </q-scroll-area>

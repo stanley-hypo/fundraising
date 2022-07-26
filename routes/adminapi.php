@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\SettingController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('register', [AuthController::class, 'register']);
@@ -20,4 +21,8 @@ Route::middleware('auth:adminapi')->group(function () {
     Route::post('roleList', [AuthController::class, 'roleList']);
     Route::post('/role/show', [AuthController::class, 'role_show']);
     Route::post('/role/update', [AuthController::class, 'role_update']);
+
+    //Setting
+    Route::post('/settings/index', [SettingController::class, 'index']);
+    Route::post('/settings/update', [SettingController::class, 'update']);
 });

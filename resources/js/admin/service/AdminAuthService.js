@@ -86,4 +86,27 @@ export default {
                 NotifyService.commitNotify( { color: 'negative', message: error.response?.data?.message??'Error', dangerous: 'check', position: '' });
             });
     },
+
+    //setting
+    getSetting(){
+        return axios
+            .post(import.meta.env.VITE_APP_URL + 'adminapi/settings/index')
+            .then(response => response.data)
+            .catch(function (error) {
+                NotifyService.commitNotify( { color: 'negative', message: error.response?.data?.message??'Error', dangerous: 'check', position: '' });
+            });
+    },
+    updateSetting(credentials){
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        }
+        return axios
+            .post(import.meta.env.VITE_APP_URL + 'adminapi/settings/update', credentials, config)
+            .then(response => response.data)
+            .catch(function (error) {
+                NotifyService.commitNotify( { color: 'negative', message: error.response?.data?.message??'Error', dangerous: 'check', position: '' });
+            });
+    },
 };

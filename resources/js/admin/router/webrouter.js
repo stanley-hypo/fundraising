@@ -11,6 +11,7 @@ import Updatepwd from "../view/Auth/updatepwd.vue"
 //User Group
 import UserGroupList from "../view/UserGroup/list.vue";
 import UserGroupEdit from "../view/UserGroup/edit.vue";
+import Setting from "../view/Setting/index.vue";
 
 //Store
 import AdminStore from "../store/AdminStore";
@@ -32,6 +33,9 @@ const routes = [
     {path: '/admin/usergroup', component: UserGroupList, name: 'UserGroupList', meta: { requiresAuth: true, keepAlive:false, permission:['admin'] }},
     {path: '/admin/usergroup/edit/:id', component: UserGroupEdit, name: 'UserGroupEdit', meta: { requiresAuth: true, keepAlive:false, permission:['admin'] }},
     {path: '/admin/user/updatepwd/:id', component: Updatepwd, name: 'Updatepwd', meta: { requiresAuth: true, keepAlive:false, permission:['admin'] }},
+
+    {path: '/admin/setting', component: Setting, name: 'Setting', meta: { requiresAuth: true, keepAlive:false, permission:['admin'] }},
+
 
     // 404
     { path: "/admin/:pathMatch(.*)*", component: {
