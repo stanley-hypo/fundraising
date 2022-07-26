@@ -1,55 +1,4 @@
 <template>
-<<<<<<< HEAD:resources/js/Admin/components/Layouts/Drawer.vue
-  <q-header elevated class="text-white" color="primary" height-hint="61.59">
-    <q-toolbar class="q-py-sm q-px-md">
-      <q-btn
-        flat
-        round
-        dense
-        icon="menu"
-        class="q-mr-sm"
-        color="white"
-        @click="toggleLeftDrawer"
-      />
-
-      <div
-        v-if="$q.screen.gt.sm"
-        class="
-          q-ml-xs q-gutter-md
-          text-body2 text-weight-bold
-          row
-          items-center
-          no-wrap
-        "
-      >
-        <router-link to="/admin/" class="text-white"> 首頁 </router-link>
-      </div>
-
-      <q-space />
-
-      <div class="q-pl-sm q-gutter-sm row items-center no-wrap">
-        <q-btn dense flat no-wrap>
-          <q-icon name="account_circle" />
-          <q-icon name="arrow_drop_down" size="16px" />
-
-          <q-menu auto-close>
-            <q-list style="min-width: 250px">
-              <q-item>
-                <q-item-section>
-                  <div>
-                    Signed in as
-                    <strong>{{ $store.state.auth?.user?.name }}</strong>
-                  </div>
-                </q-item-section>
-              </q-item>
-              <q-separator />
-              <q-item clickable>
-                <q-item-section>Settings</q-item-section>
-              </q-item>
-              <q-item @click="logout" clickable>
-                <q-item-section>Sign out</q-item-section>
-              </q-item>
-=======
     <q-header elevated class="text-white" color="primary" height-hint="61.59">
         <q-toolbar class="q-py-sm q-px-md">
             <q-btn flat round dense icon="menu" class="q-mr-sm" color="white" @click="toggleLeftDrawer" />
@@ -148,7 +97,6 @@
                 </q-expansion-item>
 
 
->>>>>>> d4e4c067e2431d1e426a5ea39fda52236292c64f:resources/js/admin/components/Layouts/Drawer.vue
             </q-list>
           </q-menu>
         </q-btn>
