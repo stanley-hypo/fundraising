@@ -10,7 +10,6 @@
                 <component :is="Component" :key="$route.name" v-if="!$route.meta.keepAlive" />
             </router-view>
         </q-page-container>
-
     </q-layout>
 </template>
 
@@ -18,6 +17,7 @@
 import Drawer from "./components/Layouts/Drawer.vue";
 import Notify from "./components/notify.vue";
 import AdminAuthService from "./service/AdminAuthService";
+import {NotifyService} from "./service/Service";
 
 export default {
     components:{

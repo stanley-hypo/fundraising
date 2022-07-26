@@ -32,23 +32,27 @@
 import Header from "../../components/Layouts/Header.vue";
 
 export default {
-    components:{
+    components: {
         Header,
     },
     data() {
         return {
             myHeader: {
-                title: '職員列表',
+                title: 'User List',
                 navBar: [
                     {
-                        title: "職員列表",
+                        title: "Home",
+                        url: "/admin"
+                    },
+                    {
+                        title: "User List",
                     }
                 ],
                 routerLink: [
                     {
                         color: 'primary',
                         icon: "add",
-                        text: "新增",
+                        text: "Add",
                         to: "/admin/user_add"
                     },
                 ]
@@ -63,8 +67,8 @@ export default {
                     field: 'id',
                     sortable: false,
                 },
-                { name: 'name', align: 'center', label: '名稱', field: 'name', sortable: true },
-                { name: 'email',  align: 'center',label: '電郵', field: 'email', sortable: true },
+                { name: 'name', align: 'center', label: 'Name', field: 'name', sortable: true },
+                { name: 'email',  align: 'center',label: 'Email', field: 'email', sortable: true },
             ],
         }
     },

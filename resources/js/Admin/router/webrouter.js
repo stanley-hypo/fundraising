@@ -8,7 +8,7 @@ import AdminStore from "../store/AdminStore";
 
 
 const routes = [
-    {path: '/admin/login', component: Login, name: 'Admin Login',  meta: { requiresAuth: false }},
+    {path: '/admin/login', component: Login, name: 'Admin Login',  meta: { requiresAuth: false, keepAlive:false }},
 
     //login 後
     {path: '/admin', component: Dashboard,  meta: { requiresAuth: true, keepAlive:false }},

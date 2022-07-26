@@ -1,13 +1,13 @@
 <template>
-    <Header :myHeader="myHeader"></Header>
-    <main>
+    <q-page>
+        <Header :myHeader="myHeader"></Header>
         <div class="q-pa-md">
             <q-form method="post" @submit.prevent="onSubmit" autocomplete="off">
                 <q-card class="my-card">
                     <q-card-section>
                         <q-card-section>
                             <div class="flex flex-wrap justify-between gap-2">
-                                <div class="text-h6">職員資料</div>
+                                <div class="text-h6">User Information</div>
                                 <q-btn label="Submit" type="submit" text-right color="primary" size="md"  />
                             </div>
                         </q-card-section>
@@ -19,8 +19,8 @@
                                     lazy-rules
                                     filled
                                     outlined
-                                    label="姓名"
-                                    :rules="[val => !!val ||  val?.length > 2 || '必填項目',]"
+                                    label="Name"
+                                    :rules="[val => !!val ||  val?.length > 2 || 'Field must be filled',]"
                                 >
                                 </q-input>
                                 <q-input
@@ -28,9 +28,9 @@
                                     lazy-rules
                                     filled
                                     outlined
-                                    label="電郵"
+                                    label="Email"
                                     type="email"
-                                    :rules="[val => !!val || '必填項目',]"
+                                    :rules="[val => !!val || 'Field must be filled',]"
                                 >
                                 </q-input>
 
@@ -39,10 +39,10 @@
                                     lazy-rules
                                     filled
                                     outlined
-                                    label="密碼"
+                                    label="Password"
                                     type="password"
                                     :rules="[
-                                        val => val.length > 5 || '必填項目',
+                                        val => val.length > 5 || 'Field must be filled',
 
                                         ]"
                                 >
@@ -53,26 +53,26 @@
                                     lazy-rules
                                     filled
                                     outlined
-                                    label="確定密碼"
+                                    label="Confirm Password"
                                     type="password"
                                     :rules="[
-                                        val => val.length > 5 || '必填項目',
-                                        val => user.password_confirm === user.password || '必須與密碼相同',
+                                        val => val.length > 5 || 'Field must be filled',
+                                        val => user.password_confirm === user.password || 'The password and its confirm password do not match',
                                         ]"
                                 >
                                 </q-input>
 
                                 <q-select
-                                    label="職級"
+                                    label="Role"
                                     v-model="user.role"
                                     filled outlined
                                     :options="roles"
                                     lazy-rules
-                                    :rules="[val => !!val || '必填項目',]"
+                                    :rules="[val => !!val || 'Field must be filled',]"
                                 >
                                 </q-select>
 
-                                <q-checkbox :true-value="1" :false-value="0" v-model="user.active" label="生效"></q-checkbox>
+                                <q-checkbox size="xl" :true-value="1" :false-value="0" v-model="user.active" label="Active"></q-checkbox>
                             </div>
                         </q-card-section>
 
@@ -85,7 +85,7 @@
                 </q-card>
             </q-form>
         </div>
-    </main>
+    </q-page>
 </template>
 
 <script>
@@ -94,20 +94,21 @@ import AdminAuthService from "../../service/AdminAuthService";
 import {NotifyService} from '../../service/Service'
 
 export default {
-    components:{
+    components: {
         Header,
     },
+
     data() {
         return {
             myHeader: {
-                title: '新增職員',
+                title: 'Add User',
                 navBar: [
                     {
-                        title: "職員列表",
+                        title: "User List",
                         url: "/admin/user",
                     },
                     {
-                        title: "新增職員"
+                        title: "Add User"
                     }
                 ],
             },
@@ -128,8 +129,10 @@ export default {
             defaultPermissions: [],
         }
     },
+
     watch: {
     },
+
     created() {
         //get role
         // ********
@@ -140,15 +143,10 @@ export default {
             this.permissions = response.result.permissions;
             this.permissionsByRole = response.result.permissionsByRole;
         })
-
-
-
     },
-    methods:{
 
-
+    methods: {
         onSubmit() {
-
 
             const role = [
                 this.user.role.value
