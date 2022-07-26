@@ -21,48 +21,14 @@
               <label for="">{{ $t("donation_type") }}</label>
             </div>
             <div class="rectangleRadioGrp w-3/4">
-              <!-- <RectangleRadio
-                name="donationType"
-                value="oneOffDonation"
-                :title="$t('donation_option1')"
-              />
               <RectangleRadio
+                v-for="data in donationTypeData"
+                :key="data.value"
                 name="donationType"
-                value="monthlyDonation"
-                :title="$t('donation_option2')"
-              /> -->
-              <div class="rectangleRadioContainer">
-                <input
-                  type="radio"
-                  id="oneOffDonation"
-                  class="rectangleRadioInput"
-                  name="donationType"
-                  value="oneOffDonation"
-                  v-model="donationType"
-                />
-                <label
-                  for="oneOffDonation"
-                  class="rectangleRadioLabel"
-                  @click="fk()"
-                  >{{ $t("donation_option1") }}
-                </label>
-              </div>
-              <div class="rectangleRadioContainer">
-                <input
-                  type="radio"
-                  id="monthlyDonation"
-                  class="rectangleRadioInput"
-                  name="donationType"
-                  value="monthlyDonation"
-                  v-model="donationType"
-                />
-                <label
-                  for="monthlyDonation"
-                  class="rectangleRadioLabel"
-                  @click="fk()"
-                  >{{ $t("donation_option2") }}
-                </label>
-              </div>
+                :value="data.value"
+                :title="data.title"
+                @updateData="updateDonationType"
+              />
             </div>
           </div>
           <!-- Donation Amount -->
@@ -77,6 +43,7 @@
                 name="donationAmount"
                 :value="data.value"
                 :title="data.title"
+                @updateData="updateDonationAmount"
               />
             </div>
           </div>
@@ -441,31 +408,53 @@ export default {
     const receipt = ref(false);
     const interested = ref(false);
 
-    const donationAmountData = [
-      { name: "donationAmount ", value: "200", title: "$200" },
-      { name: "donationAmount ", value: "400", title: "$400" },
-      { name: "donationAmount ", value: "600", title: "$600" },
-      { name: "donationAmount ", value: "800", title: "$800" },
-      { name: "donationAmount ", value: "3000", title: "$3000" },
-      { name: "donationAmount ", value: "5000", title: "$5000" },
-      { name: "donationAmount ", value: "10000", title: "$10000" },
-      { name: "donationAmount ", value: "other", title: "Others" },
+    const donationTypeData = [
+      {
+        name: "donationType",
+        value: "oneOffDonation",
+        title: "One-off donation",
+      },
+      {
+        name: "donationType",
+        value: "monthlyDonation",
+        title: "Monthly donation",
+      },
     ];
+
+    const donationAmountData = [
+      { name: "donationAmount", value: "200", title: "$200" },
+      { name: "donationAmount", value: "400", title: "$400" },
+      { name: "donationAmount", value: "600", title: "$600" },
+      { name: "donationAmount", value: "800", title: "$800" },
+      { name: "donationAmount", value: "3000", title: "$3000" },
+      { name: "donationAmount", value: "5000", title: "$5000" },
+      { name: "donationAmount", value: "10000", title: "$10000" },
+      { name: "donationAmount", value: "other", title: "Others" },
+    ];
+
+    const updateDonationType = (value) => {
+      donationType.value = value;
+    };
+    const updateDonationAmount = (value) => {
+      donationAmount.value = value;
+    };
 
     // functions
     const handleSubmit = () => {
-      router.push({
-        name: "donateComfirm",
-        params: {
-          name: this.fullname.valueOf(),
-          ccc: this.mobileAreacode.valueOf(),
-          phone: this.mobile.valueOf(),
-          email: this.email.valueOf(),
-          address1: this.address1.valueOf(),
-          address2: this.address2.valueOf(),
-          address3: this.address3.valueOf(),
-        },
-      });
+      // router.push({
+      //   name: "donateComfirm",
+      //   params: {
+      //     name: this.fullname.valueOf(),
+      //     ccc: this.mobileAreacode.valueOf(),
+      //     phone: this.mobile.valueOf(),
+      //     email: this.email.valueOf(),
+      //     address1: this.address1.valueOf(),
+      //     address2: this.address2.valueOf(),
+      //     address3: this.address3.valueOf(),
+      //   },
+      // });
+      console.log(donationType.value);
+      console.log(donationAmount.value);
     };
 
     return {
@@ -490,9 +479,12 @@ export default {
       districtOptions,
       receipt,
       interested,
+      donationTypeData,
       donationAmountData,
       // return functions
       handleSubmit,
+      updateDonationType,
+      updateDonationAmount,
     };
   },
 };

@@ -8,14 +8,21 @@
       :value="value"
       :v-model="name"
     />
-    <label :for="value" class="rectangleRadioLabel">{{ title }} </label>
+    <label :for="value" class="rectangleRadioLabel" @click="returnData">
+      {{ title }}
+    </label>
   </div>
 </template>
 
 <script>
 export default {
+  emits: ["updateData"],
   props: ["name", "value", "title"],
-  methods: {},
+  methods: {
+    returnData() {
+      this.$emit("updateData", this.value);
+    },
+  },
 };
 </script>
 
