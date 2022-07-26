@@ -86,7 +86,7 @@
                 <q-input
                   outlined
                   v-model="fullname"
-                  placeholder="e.g. Chan Tai Man"
+                  :placeholder="$t('ph_fullname')"
                   :dense="dense"
                   :rules="[
                     (val) =>

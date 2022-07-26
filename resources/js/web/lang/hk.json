@@ -12,5 +12,16 @@
     "payment_method":"付款方法",
     "donation_checkbox1":"需要收據",
     "donation_checkbox1_caption":"捐款 HKD100或以上，可申請免稅收據",
-    "donation_checkbox2":"閣下如欲收取智樂兒童遊樂協會的最新課程及活動資訊，以及/或成為本會智樂之友/智樂義工，請點選方格。"
+    "donation_checkbox2":"閣下如欲收取智樂兒童遊樂協會的最新課程及活動資訊，以及/或成為本會智樂之友/智樂義工，請點選方格。",
+
+    "donor_info":"捐款⼈資料",
+
+    "donation_option1": "單次捐款",
+    "donation_option2": "每月捐款",
+    "amount_other": "其他⾦額",
+
+    "ph_fullname": "e.g. 陳大文",
+    "ph_address1": "街道 e.g. 樂民道3號",
+    "ph_address2": "大廈/屋苑名稱 e.g. 東區尤德夫⼈那打素醫院 F 座",
+    "ph_address3": "室/樓/層 e.g. 18樓A室"
 }

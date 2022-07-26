@@ -12,6 +12,16 @@
     "payment_method":"Payment Method",
     "donation_checkbox1":"Need Receipt",
     "donation_checkbox1_caption":"Donation above HK$100 is tax-deducable",
-    "donation_checkbox2":"Please tick the box if you are interested in receiving the latest news of Playright Course/Activities and becoming our Friends of Playright/Playright Volunteers"
+    "donation_checkbox2":"Please tick the box if you are interested in receiving the latest news of Playright Course/Activities and becoming our Friends of Playright/Playright Volunteers",
+
+    "donor_info":"Donor Information",
+    "donation_option1": "One-off donation",
+    "donation_option2": "Monthly donation",
+    "amount_other": "Others",
+
+    "ph_fullname": "e.g. Chan Tai Man",
+    "ph_address1": "Room/Flat/Floor e.g. 18A",
+    "ph_address2": "Building/Estate e.g. Block F, Pamela Youde Nethersole Eastern Hospital",
+    "ph_address3": "Street No. /Street Name e.g. 3 Lok Man Road"
 
 }
