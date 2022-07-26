@@ -457,13 +457,19 @@ export default {
       router.push({
         name: "donateComfirm",
         params: {
-          name: this.fullname.valueOf(),
-          ccc: this.mobileAreacode.valueOf(),
-          phone: this.mobile.valueOf(),
-          email: this.email.valueOf(),
-          address1: this.address1.valueOf(),
-          address2: this.address2.valueOf(),
-          address3: this.address3.valueOf(),
+            name: fullname.value,
+            donationtype:donationType.value,
+            ccc: mobileAreacode.value,
+            phone: mobile.value,
+            email: email.value,
+            address1: address1.value,
+            address2: address2.value,
+            address3: address3.value,
+            title: title.value,
+            //area: area.value,
+            //district: district.value,
+            //text:remark.value
+
         },
       });
     };
