@@ -268,42 +268,82 @@
                 <q-img
                   :src="url"
                   spinner-color="white"
-                  style="height: 140px; max-width: 150px"
+                  style="
+                    width: 100% !important;
+                    min-width: 80px !important;
+                    height: auto !important;
+                    max-width: 150px;
+                  "
                 />
                 <q-img
                   :src="url"
                   spinner-color="white"
-                  style="height: 140px; max-width: 150px"
+                  style="
+                    width: 100% !important;
+                    min-width: 80px !important;
+                    height: auto !important;
+                    max-width: 150px;
+                  "
                 />
                 <q-img
                   :src="url"
                   spinner-color="white"
-                  style="height: 140px; max-width: 150px"
+                  style="
+                    width: 100% !important;
+                    min-width: 80px !important;
+                    height: auto !important;
+                    max-width: 150px;
+                  "
                 />
                 <q-img
                   :src="url"
                   spinner-color="white"
-                  style="height: 140px; max-width: 150px"
+                  style="
+                    width: 100% !important;
+                    min-width: 80px !important;
+                    height: auto !important;
+                    max-width: 150px;
+                  "
                 />
                 <q-img
                   :src="url"
                   spinner-color="white"
-                  style="height: 140px; max-width: 150px"
+                  style="
+                    width: 100% !important;
+                    min-width: 80px !important;
+                    height: auto !important;
+                    max-width: 150px;
+                  "
                 />
                 <q-img
                   :src="url"
                   spinner-color="white"
-                  style="height: 140px; max-width: 150px"
+                  style="
+                    width: 100% !important;
+                    min-width: 80px !important;
+                    height: auto !important;
+                    max-width: 150px;
+                  "
                 />
                 <q-img
                   :src="url"
                   spinner-color="white"
-                  style="height: 140px; max-width: 150px"
+                  style="
+                    width: 100% !important;
+                    min-width: 80px !important;
+                    height: auto !important;
+                    max-width: 150px;
+                  "
                 />
                 <q-img
                   :src="url"
                   spinner-color="white"
-                  style="height: 140px; max-width: 150px"
+                  style="
+                    width: 100% !important;
+                    min-width: 80px !important;
+                    height: auto !important;
+                    max-width: 150px;
+                  "
                 />
               </div>
             </div>
@@ -323,14 +363,12 @@
             "
           ></div>
           <div class="grid mt-4 w-3/4">
-            <q-checkbox v-model="receipt">
-              <label for="" class="inline-block"
-                >{{ $t("donation_checkbox1") }}
-              </label>
-            </q-checkbox>
-            <q-checkbox v-model="interested">
-              <label for="">{{ $t("donation_checkbox2") }}</label>
-            </q-checkbox>
+            <q-checkbox v-model="receipt" :label="$t('donation_checkbox1')" />
+
+            <q-checkbox
+              v-model="interested"
+              :label="$t('donation_checkbox2')"
+            />
           </div>
           <q-btn label="Submit" type="submit" color="primary" />
         </div>
