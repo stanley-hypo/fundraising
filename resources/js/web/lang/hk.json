@@ -1,3 +1,15 @@
 {
-    "App_Name": "Donation"
+    "App_Name": "Donation",
+    "donation_type":"捐款類型",
+    "donation_amount":"捐款金額 (HKD)",
+    "full_name":"捐款人姓名 (全名)",
+    "mobile_number":"手提電話",
+    "email":"電郵地址",
+    "address":"捐款人地址",
+    "remark":"備註",
+    "online":"線上付款",
+    "offline":"線下付款",
+    "payment_method":"付款方法",
+    "checkbox1":"需要收據",
+    "checkbox2":"閣下如欲收取智樂兒童遊樂協會的最新課程及活動資訊，以及/或成為本會智樂之友/智樂義工，請點選方格。"
 }

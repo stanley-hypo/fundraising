@@ -1,3 +1,16 @@
 {
-    "App_Name": "Donation"
+    "App_Name": "Donation",
+    "donation_type":"Donation Type",
+    "donation_amount":"Donation Amount (HKD)",
+    "full_name":"Name of Donor (Full Name)",
+    "mobile_number":"Moblie number",
+    "email":"Email",
+    "address":"Address",
+    "remark":"Remark",
+    "online":"Online",
+    "offline":"offline",
+    "payment_method":"Payment Method",
+    "checkbox1":"Need Receipt",
+    "checkbox2":"Please tick the box if you are interested in receiving the latest news of Playright Course/Activities and becoming our Friends of Playright/Playright Volunteers"
+
 }
