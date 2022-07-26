@@ -18,7 +18,7 @@
           <!-- Donation Type -->
           <div class="flex">
             <div class="w-1/4 self-center break-words mb-auto">
-              <label for="">{{ $t('donation_type') }}</label>
+              <label for="">{{ $t("donation_type") }}</label>
             </div>
             <div class="rectangleRadioGrp w-3/4">
               <RectangleRadio
@@ -36,7 +36,7 @@
           <!-- Donation Amount -->
           <div class="flex">
             <div class="w-1/4 self-center break-words mb-auto">
-              <label for="">{{ $t('donation_amount') }}</label>
+              <label for="">{{ $t("donation_amount") }}</label>
             </div>
             <div class="rectangleRadioGrp w-3/4">
               <RectangleRadio name="donationAmount" value="200" title="$200" />
@@ -77,7 +77,9 @@
           <!-- Input: Name of Donor -->
           <div class="flex items-center mb-5">
             <div class="w-full sm:w-full lg:w-1/4 self-center break-words">
-              <label for="">{{ $t('full_name') }}<a class="text-red-600">*</a></label>
+              <label for=""
+                >{{ $t("full_name") }}<a class="text-red-600">*</a></label
+              >
             </div>
             <div class="flex w-full sm:w-full md:w-3/4 lg:w-3/4">
               <div class="mr-5 self-center w-3/5 sm:w-3/4 md:w-3/4 lg:w-2/3">
@@ -106,7 +108,9 @@
           <!-- Input: Mobile Number -->
           <div class="flex items-center mb-5">
             <div class="w-full sm:w-full lg:w-1/4 self-center break-words">
-              <label for="">{{ $t('mobile_number') }}<a class="text-red-600">*</a></label>
+              <label for=""
+                >{{ $t("mobile_number") }}<a class="text-red-600">*</a></label
+              >
             </div>
             <div class="w-20 mr-8">
               <q-input
@@ -130,7 +134,9 @@
           <!-- Input: Email -->
           <div class="flex items-center mb-5">
             <div class="w-full sm:w-full lg:w-1/4 self-center break-words">
-              <label for="">{{ $t('email') }}<a class="text-red-600">*</a></label>
+              <label for=""
+                >{{ $t("email") }}<a class="text-red-600">*</a></label
+              >
             </div>
             <div class="mr-auto w-full sm:w-full md:w-3/4 lg:w-1/3">
               <q-input
@@ -148,7 +154,7 @@
           <div class="flex items-center">
             <!-- Input: Adress (line 1) -->
             <div class="mb-5 w-full sm:w-full lg:w-1/4 self-center break-words">
-              <label for="">{{ $t('address') }}</label>
+              <label for="">{{ $t("address") }}</label>
             </div>
             <div class="mb-5 w-full sm:w-full md:w-3/4 lg:w-3/4">
               <q-input
@@ -215,7 +221,7 @@
           <!-- Input: Remark -->
           <div class="flex items-center mb-5">
             <div class="self-start mt-2 w-full sm:w-full lg:w-1/4 break-words">
-              <label for="">{{ $t('remark') }}</label>
+              <label for="">{{ $t("remark") }}</label>
             </div>
             <div class="mb-5 w-full sm:w-full md:w-3/4 lg:w-3/4">
               <q-input
@@ -229,7 +235,7 @@
         </div>
         <!-- Payment Method -->
         <div class="mb-4">
-          <h5 class="text-center my-5">{{ $t('payment_method') }}</h5>
+          <h5 class="text-center my-5">{{ $t("payment_method") }}</h5>
           <div class="">
             <div class="flex items-center mb-5">
               <div
@@ -243,7 +249,7 @@
                   break-words
                 "
               >
-                <label for="">{{ $t('online') }}</label>
+                <label for="">{{ $t("online") }}</label>
               </div>
               <div
                 class="
@@ -316,13 +322,15 @@
               break-words
             "
           ></div>
-          <div class="grid mt-4 w-3/4 flex flex-col">
-
-            <q-checkbox v-model="receipt" label="need receipt"/><label for="" class="inline-block">{{ $t('checkbox1') }}</label>
-            <q-checkbox
-              v-model="interested"
-              label="Please tick the box if you are interested in receiving the latest news of Playright Courses/Activities and becoming our Friends of Playright/Playright Volunteers"
-            />
+          <div class="grid mt-4 w-3/4">
+            <q-checkbox v-model="receipt">
+              <label for="" class="inline-block"
+                >{{ $t("donation_checkbox1") }}
+              </label>
+            </q-checkbox>
+            <q-checkbox v-model="interested">
+              <label for="">{{ $t("donation_checkbox2") }}</label>
+            </q-checkbox>
           </div>
           <q-btn label="Submit" type="submit" color="primary" />
         </div>

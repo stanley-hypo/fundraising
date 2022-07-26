@@ -8,9 +8,9 @@
     "address":"Address",
     "remark":"Remark",
     "online":"Online",
-    "offline":"offline",
+    "offline":"Offline",
     "payment_method":"Payment Method",
-    "checkbox1":"Need Receipt",
-    "checkbox2":"Please tick the box if you are interested in receiving the latest news of Playright Course/Activities and becoming our Friends of Playright/Playright Volunteers"
+    "donation_checkbox1":"Need Receipt",
+    "donation_checkbox2":"Please tick the box if you are interested in receiving the latest news of Playright Course/Activities and becoming our Friends of Playright/Playright Volunteers"
 
 }
