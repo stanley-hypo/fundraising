@@ -406,52 +406,54 @@ export default {
   props: [],
   name: "Donation",
   components: { RectangleRadio },
-  data() {
-    return {
-      // donationType: "",
-      // donationAmount: "",
-    };
-  },
   setup() {
+    // data
+    const dense = ref(true);
     const url = ref("https://placeimg.com/500/300/nature");
-    return {
-      dense: ref(true),
-      url,
-      // v-model value
-      donationType: ref(""),
-      donationAmount: ref(""),
-      fullname: ref(""),
-      mobileAreacode: ref(""),
-      mobile: ref(""),
-      email: ref(""),
-      address1: ref(""),
-      address2: ref(""),
-      address3: ref(""),
-      title: ref(null),
-      area: ref(null),
-      district: ref(null),
-      remark: ref(""),
-      titleOptions: ["Mr", "Miss", "Ms", "Mrs", "Dr", "Prof"],
-      areaOptions: ["WONG NAI CHUNG GAP", "Miss", "Ms", "Mrs", "Dr", "Prof"],
-      districtOptions: ["HONG_KONG", "KOWLOON", "NEW TERRITORIES", "LANTAU"],
-      receipt: ref(false),
-      interested: ref(false),
+    const fullname = ref("");
+    const donationType = ref("");
+    const donationAmount = ref("");
+    const mobileAreacode = ref("");
+    const mobile = ref("");
+    const email = ref("");
+    const address1 = ref("");
+    const address2 = ref("");
+    const address3 = ref("");
+    const title = ref(null);
+    const area = ref(null);
+    const district = ref(null);
+    const remark = ref("");
+    const titleOptions = ["Mr", "Miss", "Ms", "Mrs", "Dr", "Prof"];
+    const areaOptions = [
+      "WONG NAI CHUNG GAP",
+      "Miss",
+      "Ms",
+      "Mrs",
+      "Dr",
+      "Prof",
+    ];
+    const districtOptions = [
+      "HONG_KONG",
+      "KOWLOON",
+      "NEW TERRITORIES",
+      "LANTAU",
+    ];
+    const receipt = ref(false);
+    const interested = ref(false);
 
-      //
-      donationAmountData: [
-        { name: "donationAmount ", value: "200", title: "$200" },
-        { name: "donationAmount ", value: "400", title: "$400" },
-        { name: "donationAmount ", value: "600", title: "$600" },
-        { name: "donationAmount ", value: "800", title: "$800" },
-        { name: "donationAmount ", value: "3000", title: "$3000" },
-        { name: "donationAmount ", value: "5000", title: "$5000" },
-        { name: "donationAmount ", value: "10000", title: "$10000" },
-        { name: "donationAmount ", value: "other", title: "Others" },
-      ],
-    };
-  },
-  methods: {
-    handleSubmit() {
+    const donationAmountData = [
+      { name: "donationAmount ", value: "200", title: "$200" },
+      { name: "donationAmount ", value: "400", title: "$400" },
+      { name: "donationAmount ", value: "600", title: "$600" },
+      { name: "donationAmount ", value: "800", title: "$800" },
+      { name: "donationAmount ", value: "3000", title: "$3000" },
+      { name: "donationAmount ", value: "5000", title: "$5000" },
+      { name: "donationAmount ", value: "10000", title: "$10000" },
+      { name: "donationAmount ", value: "other", title: "Others" },
+    ];
+
+    // functions
+    const handleSubmit = () => {
       router.push({
         name: "donateComfirm",
         params: {
@@ -464,7 +466,34 @@ export default {
           address3: this.address3.valueOf(),
         },
       });
-    },
+    };
+
+    return {
+      // return data
+      dense,
+      url,
+      fullname,
+      donationType,
+      donationAmount,
+      mobileAreacode,
+      mobile,
+      email,
+      address1,
+      address2,
+      address3,
+      title,
+      area,
+      district,
+      remark,
+      titleOptions,
+      areaOptions,
+      districtOptions,
+      receipt,
+      interested,
+      donationAmountData,
+      // return functions
+      handleSubmit,
+    };
   },
 };
 </script>
