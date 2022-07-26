@@ -316,11 +316,9 @@
               break-words
             "
           ></div>
-
           <div class="grid mt-4 w-3/4 flex flex-col">
-              <div class="mt-4 w-3/4 flex flex-col">
-            <q-checkbox v-model="receipt" label="Need Receipt"/><label for="">{{ $t('checkbox1') }}</label></div>
 
+            <q-checkbox v-model="receipt" label="need receipt"/><label for="" class="inline-block">{{ $t('checkbox1') }}</label>
             <q-checkbox
               v-model="interested"
               label="Please tick the box if you are interested in receiving the latest news of Playright Courses/Activities and becoming our Friends of Playright/Playright Volunteers"
