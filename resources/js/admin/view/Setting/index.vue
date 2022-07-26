@@ -18,7 +18,7 @@
                             <div class="flex">
 
                                 <div class="flex-grow">
-                                    <q-file accept=".jpg, image/*" :max-total-size="1024*1024" label="App Icon *" hint="File Size < 1MB" @rejected="onFileRejected" outlined v-model="setting.icon" >
+                                    <q-file accept=".jpg, image/*" :max-total-size="1024*1024" label="App Icon" hint="File Size < 1MB" @rejected="onFileRejected" outlined v-model="setting.icon" >
                                         <template v-slot:prepend>
                                             <q-avatar>
                                                 <q-icon name="image" />
@@ -95,11 +95,7 @@ export default {
         }
     },
     mounted() {
-        AdminAuthService.getSetting()
-            .then(response=>{
-                this.previcon = response.setting.icon
-                this.setting = response.setting
-            })
+        this.getSetting()
     },
     methods: {
         onFileRejected (rejectedEntries) {
@@ -116,14 +112,21 @@ export default {
             data.append('icon', this.setting.icon);
             AdminAuthService.updateSetting(data)
                 .then(response=>{
-                    NotifyService.commitNotify( { color: 'positive', message: res.data.success??'', icon: 'check', position: '' });
-                    this.$router.replace("/admin/setting")
+                    NotifyService.commitNotify( { color: 'positive', message: response.message??'Success', icon: 'check', position: '' });
+                    this.getSetting()
                 })
                 .finally(()=>{
                     this.hideloading()
                     this.submitting = false
                 });
 
+        },
+        getSetting(){
+            AdminAuthService.getSetting()
+                .then(response=>{
+                    this.previcon = response.setting.icon
+                    this.setting = response.setting
+                })
         }
     },
 };

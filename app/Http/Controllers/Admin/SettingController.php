@@ -51,7 +51,6 @@ class SettingController extends Controller
         $input = $request->all();
         $validator = Validator::make($input,[
             'app_name' => 'required|max:100',
-            'icon' => 'file',
         ]);
 
         if ($validator->fails()) {
