@@ -7,9 +7,9 @@ import hk from './lang/hk.json'
 import en from './lang/en.json'
 import webrouter from "./router/webrouter"
 import App from './App.vue'
-import { Quasar } from 'quasar'
+import {Dialog, Loading, Notify, Quasar} from 'quasar'
 import IconSet from 'quasar/icon-set/fontawesome-v6'
-import 'tw-elements';
+// import 'tw-elements';
 // Import icon libraries
 import '@quasar/extras/material-icons/material-icons.css'
 import '@quasar/extras/material-symbols-outlined/material-symbols-outlined.css'
@@ -47,6 +47,9 @@ app.use(Quasar, {
         },
     },
     plugins: {
+        Notify,
+        Dialog,
+        Loading
     }, // import Quasar plugins and add here
     iconSet: IconSet,
 })

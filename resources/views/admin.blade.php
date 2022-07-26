@@ -9,7 +9,7 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <link href="{{url('assets/css/quasar.css')}}" rel="stylesheet">
+    <link href="{{url('assets/css/qstyle.css')}}" rel="stylesheet">
     <link href="{{url('assets/ckeditor5/ckeditor.css')}}" rel="stylesheet">
     <script src="{{url('assets/ckeditor5/ckeditor.js')}}"></script>
 
@@ -33,6 +33,6 @@
 <div id="app">
 
 </div>
-@vite(['resources/js/admin/app.js'])
+@vite(['resources/js/admin/admin.js'])
 </body>
 </html>

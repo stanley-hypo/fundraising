@@ -63,24 +63,15 @@
                 <q-expansion-item
                     icon="person"
                     :content-inset-level="0.5"
-                    label="會員">
+                    label="捐款">
                     <q-list  padding  separator>
                         <q-item to="/admin/member/index" clickable v-ripple>
-                            <q-item-section>會員列表</q-item-section>
+                            <q-item-section>每月捐款</q-item-section>
                         </q-item>
 
                     </q-list>
                 </q-expansion-item>
-                <q-expansion-item
-                    icon="event"
-                    :content-inset-level="0.5"
-                    label="活動">
-                    <q-list  padding  separator>
-                        <q-item to="/admin/activity/index" clickable v-ripple>
-                            <q-item-section>活動列表</q-item-section>
-                        </q-item>
-                    </q-list>
-                </q-expansion-item>
+
                 <q-item to="/admin/user"
                         v-if="can('setting')"
                         clickable v-ripple>
@@ -88,26 +79,6 @@
                         <q-icon name="manage_accounts" />
                     </q-item-section>
                     <q-item-section>職員</q-item-section>
-                </q-item>
-                <q-item to="/admin/article" clickable v-ripple>
-                    <q-item-section avatar>
-                        <q-icon name="article" />
-                    </q-item-section>
-                    <q-item-section>網頁內容</q-item-section>
-                </q-item>
-                <q-item to="/admin/banner" clickable v-ripple>
-                    <q-item-section avatar>
-                        <q-icon name="collections" />
-                    </q-item-section>
-                    <q-item-section>橫幅</q-item-section>
-                </q-item>
-                <q-item to="/admin/media"
-                        v-if="can('setting')"
-                        clickable v-ripple>
-                    <q-item-section avatar>
-                        <q-icon name="image" />
-                    </q-item-section>
-                    <q-item-section>圖片庫</q-item-section>
                 </q-item>
 
                 <q-expansion-item
@@ -121,11 +92,6 @@
                         <q-item to="/admin/usergroup" clickable v-ripple v-if="$store.getters['auth/isAdmin']">
                             <q-item-section>權限組別</q-item-section>
                         </q-item>
-
-                        <q-item to="/admin/options" clickable v-ripple v-if="$store.getters['auth/isAdmin']">
-                            <q-item-section>下拉列表</q-item-section>
-                        </q-item>
-
 
                     </q-list>
                 </q-expansion-item>
