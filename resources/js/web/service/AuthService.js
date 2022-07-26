@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {NotifyService} from "../../Admin/service/Service";
+import {NotifyService} from "../../admin/service/Service";
 
 const url = '/';
 

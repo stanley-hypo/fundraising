@@ -33,10 +33,6 @@ export default {
                 title: 'Role List',
                 navBar: [
                     {
-                        title: "Home",
-                        url: "/admin"
-                    },
-                    {
                         title: "Role List",
                     }
                 ],

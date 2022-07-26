@@ -4,30 +4,26 @@
         <div class="q-pa-md">
             <q-card class="my-card">
                 <q-card-section>
-                    <q-card-section>
-                        <div class="flex flex-wrap justify-between gap-2">
-                            <div class="text-h6">Edit Role List</div>
-                            <q-btn label="Submit" type="submit" text-right color="primary" size="md"  />
-                        </div>
-                    </q-card-section>
+                    <div class="flex flex-wrap justify-between gap-2">
+                        <div class="text-h6">Edit Role</div>
+                        <q-btn label="Submit" type="submit" text-right color="primary" size="md"  />
+                    </div>
+                </q-card-section>
 
-                    <q-card-section>
-                        <q-table
-                            :title="role?.name+' Permission'"
-                            :rows="permissionslists"
-                            :columns="permission_cols"
-                            row-key="id"
-                            selection="multiple"
-                            v-model:selected="selectedpermission"
-                            rows-per-page-options="0"
-                        />
-                    </q-card-section>
+                <q-table
+                    :title="role?.name+' Permission'"
+                    :rows="permissionslists"
+                    :columns="permission_cols"
+                    row-key="id"
+                    selection="multiple"
+                    v-model:selected="selectedpermission"
+                    rows-per-page-options="0"
+                />
 
-                    <q-card-section>
-                        <div class="flex flex-wrap justify-end gap-2">
-                            <q-btn label="Submit" type="button" @click="onSubmit" text-right color="primary" size="md" />
-                        </div>
-                    </q-card-section>
+                <q-card-section>
+                    <div class="flex flex-wrap justify-end gap-2">
+                        <q-btn label="Submit" type="button" @click="onSubmit" text-right color="primary" size="md" />
+                    </div>
                 </q-card-section>
             </q-card>
         </div>
@@ -54,7 +50,7 @@ export default {
                         url: "/admin/usergroup"
                     },
                     {
-                        title: "Edit Role List",
+                        title: "Edit Role",
                     }
                 ],
             },

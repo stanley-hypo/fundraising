@@ -7,7 +7,7 @@
                     <q-card-section>
                         <q-card-section>
                             <div class="flex flex-wrap justify-between gap-2">
-                                <div class="text-h6">User Information</div>
+                                <div class="text-h6">New Password</div>
                             </div>
                         </q-card-section>
 

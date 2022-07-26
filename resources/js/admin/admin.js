@@ -8,7 +8,7 @@ import AdminStore from "./store/AdminStore";
 import { Quasar, Notify, Dialog, Loading } from 'quasar'
 import iconSet from 'quasar/icon-set/fontawesome-v6'
 import '@quasar/extras/roboto-font/roboto-font.css'
-//lang
+//lang for quasar
 import langTW from 'quasar/lang/zh-TW'
 // Import icon libraries
 import '@quasar/extras/material-icons/material-icons.css'

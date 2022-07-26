@@ -41,10 +41,6 @@ export default {
                 title: 'User List',
                 navBar: [
                     {
-                        title: "Home",
-                        url: "/admin"
-                    },
-                    {
                         title: "User List",
                     }
                 ],
