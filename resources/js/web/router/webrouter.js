@@ -9,7 +9,8 @@ import Testing from "../view/Testing.vue";
 const routes = [
     { path: "/", component: Donation, meta: { requiresAuth: false } },
     {
-        path: "/donateComfirm/:name/:ccc/:phone/:address1/:address2/:address3",
+        //path: "/donateComfirm/:name/:ccc/:phone/:address1/:address2/:address3",
+        path: "/donateComfirm/:name",
         name: "donateComfirm",
         component: donateComfirm,
         props: true,

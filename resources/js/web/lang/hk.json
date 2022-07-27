@@ -24,5 +24,9 @@
     "ph_fullname": "e.g. 陳大文",
     "ph_address1": "街道 e.g. 樂民道3號",
     "ph_address2": "大廈/屋苑名稱 e.g. 東區尤德夫⼈那打素醫院 F 座",
-    "ph_address3": "室/樓/層 e.g. 18樓A室"
+    "ph_address3": "室/樓/層 e.g. 18樓A室",
+
+    "need_receipt": "需要收據",
+    "display_yes": "是",
+    "display_no": "否"
 }

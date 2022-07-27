@@ -24,6 +24,10 @@
     "ph_fullname": "e.g. Chan Tai Man",
     "ph_address1": "Room/Flat/Floor e.g. 18A",
     "ph_address2": "Building/Estate e.g. Block F, Pamela Youde Nethersole Eastern Hospital",
-    "ph_address3": "Street No. /Street Name e.g. 3 Lok Man Road"
+    "ph_address3": "Street No. /Street Name e.g. 3 Lok Man Road",
+
+    "need_receipt": "Need Receipt",
+    "display_yes": "Yes",
+    "display_no": "No"
 
 }
