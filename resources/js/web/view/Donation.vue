@@ -358,13 +358,16 @@
             />
           </div>
         </div>
+        <router-link :to="{ name: 'Testing' }">
+          <button>Hello</button>
+        </router-link>
       </q-form>
     </div>
   </q-page>
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, watch, onMounted } from "vue";
 import RectangleRadio from "../components/Input/RectangleRadio.vue";
 import { useRoute, useRouter } from "vue-router";
 import router from "../router/webrouter";
@@ -377,19 +380,22 @@ export default {
     // data
     const dense = ref(true);
     const url = ref("https://placeimg.com/500/300/nature");
-    const fullname = ref("");
+    const formData = ref([]);
     const donationType = ref("");
     const donationAmount = ref("");
+    const fullname = ref("");
+    const title = ref(null);
     const mobileAreacode = ref("");
     const mobile = ref("");
     const email = ref("");
     const address1 = ref("");
     const address2 = ref("");
     const address3 = ref("");
-    const title = ref(null);
     const area = ref(null);
     const district = ref(null);
     const remark = ref("");
+    const receipt = ref(false);
+    const interested = ref(false);
     const titleOptions = ["Mr", "Miss", "Ms", "Mrs", "Dr", "Prof"];
     const areaOptions = [
       "WONG NAI CHUNG GAP",
@@ -405,8 +411,6 @@ export default {
       "NEW TERRITORIES",
       "LANTAU",
     ];
-    const receipt = ref(false);
-    const interested = ref(false);
 
     const donationTypeData = [
       {
@@ -432,6 +436,7 @@ export default {
       { name: "donationAmount", value: "other", title: "Others" },
     ];
 
+    // update value from child component (RectangleRadio.vue)
     const updateDonationType = (value) => {
       donationType.value = value;
     };
@@ -441,39 +446,69 @@ export default {
 
     // functions
     const handleSubmit = () => {
-      router.push({
-        name: "donateComfirm",
-        params: {
-          name: fullname.value,
-          donationtype: donationType.value,
-          ccc: mobileAreacode.value,
-          phone: mobile.value,
-          email: email.value,
-          address1: address1.value,
-          address2: address2.value,
-          address3: address3.value,
-          title: title.value,
-          //area: area.value,
-          //district: district.value,
-          //text:remark.value
-        },
-      });
+      // router.push({
+      //   name: "donateComfirm",
+      //   params: {
+      //     name: fullname.value,
+      //     donationType: donationType.value,
+      //     donationAmount: donationAmount.value,
+      //     ccc: mobileAreacode.value,
+      //     phone: mobile.value,
+      //     email: email.value,
+      //     address1: address1.value,
+      //     address2: address2.value,
+      //     address3: address3.value,
+      //     title: title.value,
+      //     //area: area.value,
+      //     //district: district.value,
+      //     //text:remark.value
+      //   },
+      // });
+      formData.value = {
+        donationType: donationType,
+        donationAmount: donationAmount,
+        fullname: fullname,
+        title: title,
+        mobileAreacode: mobileAreacode,
+        mobile: mobile,
+        email: email,
+        address1: address1,
+        address2: address2,
+        address3: address3,
+        area: area,
+        district: district,
+        remark: remark,
+        receipt: receipt,
+        interested: interested,
+      };
     };
+
+    watch(
+      formData,
+      (newVal) => {
+        localStorage.setItem("formData", JSON.stringify(newVal));
+      },
+      { deep: true }
+    );
+
+    onMounted(() => {
+      formData.value = JSON.parse(localStorage.getItem("formData")) || [];
+    });
 
     return {
       // return data
       dense,
       url,
-      fullname,
       donationType,
       donationAmount,
+      fullname,
+      title,
       mobileAreacode,
       mobile,
       email,
       address1,
       address2,
       address3,
-      title,
       area,
       district,
       remark,
