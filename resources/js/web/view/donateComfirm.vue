@@ -18,11 +18,11 @@
         <div class="leading-loose grid grid-cols-5 gap-4 ">
 
             <div class="sm:col-start-1 col-span-1">{{$t('donation_type')}}</div>
-            <p class="pl-4 col-start-2 sm:col-start-2 col-span-6 ">dsadsa</p>
+            <p class="pl-4 col-start-2 sm:col-start-2 col-span-6 ">{{formData.donationType}}</p>
 
 
             <div class="sm:col-start-1 col-span-1">{{$t('donation_amount')}}</div>
-            <p class="pl-4 sm:col-start-2 col-span-6">{{formData.mobileAreacode}}&nbsp;{{formData.mobile}}</p>
+            <p class="pl-4 sm:col-start-2 col-span-6">{{formData.donationAmount}}</p>
 
             <div class="sm:col-start-1 col-span-1">{{$t('payment_method')}}</div>
             <p class="pl-4 sm:col-start-2 col-span-6">{{formData.address1}}{{formData.address2}}{{formData.address3}}</p>
