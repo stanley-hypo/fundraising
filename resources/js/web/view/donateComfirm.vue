@@ -53,7 +53,8 @@
 
 
 
-            <q-btn @click="showdata123" class="col-end-6 ">clickclick</q-btn>
+
+            <q-btn @click="postformdata" class="col-end-6 ">clickclick</q-btn>
 
         </div>
         </div>
@@ -62,6 +63,7 @@
 
 <script>
 import { useRoute,useRouter } from 'vue-router';
+import axios from "axios";
 
 /*    const route = useRoute()
     const router = useRouter() */
@@ -72,8 +74,16 @@ export default{
     computed:{
     },
     methods:{
-        showdata123(){
-            console.log(this.formData.fullname)
+
+        postformdata(){
+            console.log(this.formData.fullname),
+            axios.post("https://jsonplaceholder.typicode.com/posts",{
+                userId:13,
+                title:this.formData.email,
+                body:this.formData.address1
+
+            }).then((response) => console.log(response))
+                .catch((error) => console.log(error))
         }
     },
     setup(){
