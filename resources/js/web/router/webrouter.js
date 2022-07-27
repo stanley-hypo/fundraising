@@ -3,7 +3,7 @@ import Auth from "../store/Auth";
 //VUE
 import Home from "../view/Home.vue";
 import Donation from "../view/Donation.vue";
-import donateComfirm from "../view/donateComfirm.vue";
+import donateComfirm from "../view/DonationComfirm.vue";
 import Testing from "../view/Testing.vue";
 
 const routes = [
