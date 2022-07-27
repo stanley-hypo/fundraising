@@ -28,6 +28,7 @@
                 :value="data.value"
                 :title="data.title"
                 @updateData="updateDonationType"
+                :checked="donationTypeChecked"
               />
             </div>
           </div>
@@ -44,6 +45,7 @@
                 :value="data.value"
                 :title="data.title"
                 @updateData="updateDonationAmount"
+                :checked="donationAmountChecked"
               />
             </div>
           </div>
@@ -380,8 +382,14 @@ export default {
     const dense = ref(true);
     const url = ref("https://placeimg.com/500/300/nature");
     const formData = ref([]);
-    const donationType = ref("monthlyDonation");
+    const donationType = ref("");
+    const donationTypeChecked = JSON.parse(
+      localStorage.getItem("formData")
+    ).donationType;
     const donationAmount = ref("");
+    const donationAmountChecked = JSON.parse(
+      localStorage.getItem("formData")
+    ).donationAmount;
     const fullname = ref("");
     const title = ref(null);
     const mobileAreacode = ref("");
@@ -444,7 +452,7 @@ export default {
     };
 
     const testing = () => {
-      console.log(formData.value.fullname);
+      console.log(formData.value.donationType);
     };
 
     // functions
@@ -497,10 +505,12 @@ export default {
     onMounted(() => {
       formData.value = JSON.parse(localStorage.getItem("formData")) || [];
 
-      // if (formData.value.donationType) {
-      //   // console.log("helloooo");
-      //   console.log(donationType);
-      // }
+      if (formData.value.donationType) {
+        donationType.value = formData.value.donationType;
+      }
+      if (formData.value.donationAmount) {
+        donationAmount.value = formData.value.donationAmount;
+      }
       if (formData.value.fullname) {
         fullname.value = formData.value.fullname;
       }
@@ -546,8 +556,11 @@ export default {
       // return data
       dense,
       url,
+      formData,
       donationType,
+      donationTypeChecked,
       donationAmount,
+      donationAmountChecked,
       fullname,
       title,
       mobileAreacode,
