@@ -358,9 +358,8 @@
             />
           </div>
         </div>
-        <router-link :to="{ name: 'Testing' }">
-          <button>Hello</button>
-        </router-link>
+
+        <button @click="testing">Hello</button>
       </q-form>
     </div>
   </q-page>
@@ -381,7 +380,7 @@ export default {
     const dense = ref(true);
     const url = ref("https://placeimg.com/500/300/nature");
     const formData = ref([]);
-    const donationType = ref("");
+    const donationType = ref("monthlyDonation");
     const donationAmount = ref("");
     const fullname = ref("");
     const title = ref(null);
@@ -444,6 +443,10 @@ export default {
       donationAmount.value = value;
     };
 
+    const testing = () => {
+      console.log(formData.value.fullname);
+    };
+
     // functions
     const handleSubmit = () => {
       // router.push({
@@ -465,21 +468,21 @@ export default {
       //   },
       // });
       formData.value = {
-        donationType: donationType,
-        donationAmount: donationAmount,
-        fullname: fullname,
-        title: title,
-        mobileAreacode: mobileAreacode,
-        mobile: mobile,
-        email: email,
-        address1: address1,
-        address2: address2,
-        address3: address3,
-        area: area,
-        district: district,
-        remark: remark,
-        receipt: receipt,
-        interested: interested,
+        donationType: donationType.value,
+        donationAmount: donationAmount.value,
+        fullname: fullname.value,
+        title: title.value,
+        mobileAreacode: mobileAreacode.value,
+        mobile: mobile.value,
+        email: email.value,
+        address1: address1.value,
+        address2: address2.value,
+        address3: address3.value,
+        area: area.value,
+        district: district.value,
+        remark: remark.value,
+        receipt: receipt.value,
+        interested: interested.value,
       };
     };
 
@@ -493,6 +496,50 @@ export default {
 
     onMounted(() => {
       formData.value = JSON.parse(localStorage.getItem("formData")) || [];
+
+      // if (formData.value.donationType) {
+      //   // console.log("helloooo");
+      //   console.log(donationType);
+      // }
+      if (formData.value.fullname) {
+        fullname.value = formData.value.fullname;
+      }
+      if (formData.value.title) {
+        title.value = formData.value.title;
+      }
+      if (formData.value.mobileAreacode) {
+        mobileAreacode.value = formData.value.mobileAreacode;
+      }
+      if (formData.value.mobile) {
+        mobile.value = formData.value.mobile;
+      }
+      if (formData.value.email) {
+        email.value = formData.value.email;
+      }
+      if (formData.value.address1) {
+        address1.value = formData.value.address1;
+      }
+      if (formData.value.address2) {
+        address2.value = formData.value.address2;
+      }
+      if (formData.value.address3) {
+        address3.value = formData.value.address3;
+      }
+      if (formData.value.area) {
+        area.value = formData.value.area;
+      }
+      if (formData.value.district) {
+        district.value = formData.value.district;
+      }
+      if (formData.value.remark) {
+        remark.value = formData.value.remark;
+      }
+      if (formData.value.receipt) {
+        receipt.value = formData.value.receipt;
+      }
+      if (formData.value.interested) {
+        interested.value = formData.value.interested;
+      }
     });
 
     return {
@@ -521,6 +568,7 @@ export default {
       donationAmountData,
       // return functions
       handleSubmit,
+      testing,
       updateDonationType,
       updateDonationAmount,
     };
