@@ -21,9 +21,18 @@
         "
       >
         <div class="">
-          <p class="font-medium mb-4 flex justify-center md:justify-start">
-            2022 © Playright | 智樂兒童遊樂協會 | 📞 2898 2922 |
-            fundraising@playright.org.hk
+          <p
+            class="
+              font-medium
+              mb-4
+              flex
+              justify-center
+              md:justify-start
+              items-center
+            "
+          >
+            2022 © Playright | 智樂兒童遊樂協會 |
+            <q-icon name="phone" /> 2898 2922 | fundraising@playright.org.hk
           </p>
         </div>
         <div class="">

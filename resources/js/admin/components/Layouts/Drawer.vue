@@ -76,7 +76,7 @@
 
         <q-expansion-item icon="person" :content-inset-level="0.5" label="捐款">
           <q-list padding separator>
-            <q-item to="/admin/member/index" clickable v-ripple>
+            <q-item :to="{ name: 'Monthly Donation' }" clickable v-ripple>
               <q-item-section>每月捐款</q-item-section>
             </q-item>
           </q-list>
@@ -104,16 +104,15 @@
             >
               <q-item-section>權限組別</q-item-section>
             </q-item>
-              <q-item
-                  to="/admin/setting"
-                  clickable
-                  v-ripple
-                  v-if="$store.getters['auth/isAdmin']"
-              >
-                  <q-item-section>系統設定</q-item-section>
-              </q-item>
+            <q-item
+              to="/admin/setting"
+              clickable
+              v-ripple
+              v-if="$store.getters['auth/isAdmin']"
+            >
+              <q-item-section>系統設定</q-item-section>
+            </q-item>
           </q-list>
-
         </q-expansion-item>
       </q-list>
     </q-scroll-area>
