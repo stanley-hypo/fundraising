@@ -2,7 +2,8 @@
   <q-page class="q-pa-md">
     <div
       class="
-        max-w-5xl
+        max-w-xl
+        sm:max-w-5xl
         p-10
         bg-[#fffffa]
         mx-auto
@@ -15,25 +16,25 @@
         <p>{{ $t("donation") }}</p>
       </div>
 
-      <div class="leading-loose grid grid-cols-5 gap-4">
+      <div class="leading-loose grid grid-cols-2 gap-4 break-words sm:grid-cols-5">
         <div class="sm:col-start-1 col-span-1">{{ $t("donation_type") }}</div>
-        <p class="pl-4 col-start-2 sm:col-start-2 col-span-6">dsadsa</p>
+        <p class="pl-4 col-start-2 sm:col-start-2 col-span-4">{{formData.donationType}}</p>
 
         <div class="sm:col-start-1 col-span-1">{{ $t("donation_amount") }}</div>
-        <p class="pl-4 sm:col-start-2 col-span-6">
-          {{ formData.mobileAreacode }}&nbsp;{{ formData.mobile }}
+        <p class="pl-4 col-start-2 col-span-1 sm:col-start-2 col-span-4">
+            {{formData.donationAmount}}
         </p>
 
         <div class="sm:col-start-1 col-span-1">{{ $t("payment_method") }}</div>
-        <p class="pl-4 sm:col-start-2 col-span-6">
+        <p class="pl-4 sm:col-start-2 col-span-4">
           {{ formData.address1 }}{{ formData.address2 }}{{ formData.address3 }}
         </p>
 
         <div class="sm:col-start-1 col-span-1">{{ $t("need_receipt") }}</div>
-        <p v-if="formData.receipt" class="pl-4 sm:col-start-2 col-span-6">
+        <p v-if="formData.receipt" class="pl-4 sm:col-start-2 col-span-4">
           {{ $t("display_yes") }}
         </p>
-        <p v-else class="pl-4 sm:col-start-2 col-span-6">
+        <p v-else class="pl-4 sm:col-start-2 col-span-4">
           {{ $t("display_no") }}
         </p>
       </div>
@@ -43,31 +44,33 @@
       <div class="flex justify-center">
         <p>{{ $t("donor_info") }}</p>
       </div>
+        <div class="leading-loose grid grid-cols-2 gap-4 break-words sm:grid-cols-5">
+            <div class="sm:col-start-1 col-span-1">{{ $t("full_name") }}</div>
+            <p class="pl-4 col-start-2 sm:col-start-2 col-span-4">{{ formData.title }}.&nbsp;{{ formData.fullname }}</p>
+
+            <div class="sm:col-start-1 col-span-1">{{ $t("mobile_number") }}</div>
+            <p class="pl-4 sm:col-start-2 col-span-4">
+                +{{ formData.mobileAreacode }}&nbsp;{{ formData.mobile }}
+            </p>
+
+            <div class="sm:col-start-1 col-span-1">{{ $t("email") }}</div>
+            <p class="pl-4 sm:col-start-2 col-span-4">
+                {{ formData.email }}
+            </p>
+
+            <div class="sm:col-start-1 col-span-1">{{ $t("address") }}</div>
+            <p class="pl-4 sm:col-start-2 col-span-4">
+                {{ formData.address1 }}{{ formData.address2 }}{{ formData.address3 }}
+            </p>
+            <div class="sm:col-start-1 col-span-1">{{ $t("remark") }}</div>
+            <p class="pl-4 sm:col-start-2 col-span-4">
+                {{ formData.remark }}
+            </p>
+
+        </div>
       <div
-        class="leading-loose justify-items-stretch sm:grid grid-cols-5 gap-4"
+        class=""
       >
-        <div class="col-start-1 col-span-1">{{ $t("full_name") }}</div>
-        <p class="pl-4 col-start-2 col-span-6">
-          {{ formData.title }}.&nbsp;{{ formData.fullname }}
-        </p>
-
-        <div class="col-start-1 col-span-1">{{ $t("mobile_number") }}</div>
-        <p class="pl-4 col-start-2 col-span-6">
-          +{{ formData.mobileAreacode }}&nbsp;{{ formData.mobile }}
-        </p>
-
-        <div class="col-start-1 col-span-1">{{ $t("email") }}</div>
-        <p class="pl-4 col-start-2 col-span-6">{{ formData.email }}</p>
-
-        <div class="col-start-1 col-span-1">{{ $t("address") }}</div>
-        <p class="pl-4 col-start-2 col-span-6">
-          {{ formData.address1 }}&nbsp;&nbsp;{{
-            formData.address2
-          }}&nbsp;&nbsp;{{ formData.address3 }}
-        </p>
-
-        <div class="col-start-1 col-span-1">{{ $t("remark") }}</div>
-        <p class="pl-4 col-start-2 col-span-6">{{ formData.remark }}</p>
 
         <q-btn @click="showdata123" class="col-end-6">clickclick</q-btn>
       </div>
@@ -77,6 +80,7 @@
 
 <script>
 import { useRoute, useRouter } from "vue-router";
+import axios from "axios";
 
 /*    const route = useRoute()
     const router = useRouter() */
@@ -86,7 +90,14 @@ export default {
   computed: {},
   methods: {
     showdata123() {
-      console.log(this.formData.fullname);
+      console.log(this.formData.fullname+ "D");
+        axios.post("https://jsonplaceholder.typicode.com/posts",{
+            userId:13,
+            title:this.formData.email,
+            body:this.formData.address1
+
+        }).then((response) => console.log(response))
+            .catch((error) => console.log(error))
     },
   },
   setup() {
