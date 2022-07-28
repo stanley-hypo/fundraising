@@ -34,19 +34,19 @@ const routes = [
         meta: { requiresAuth: true, keepAlive: false },
     },
     {
-        path: "/admin/member/monthly_donation",
+        path: "/admin/donation/monthly_donation",
         component: MonthlyDonation,
         name: "Monthly Donation",
         meta: { requiresAuth: true, keepAlive: false },
     },
     {
-        path: "/admin/member/monthly_donation/view/:id",
+        path: "/admin/donation/monthly_donation/view/:id",
         component: MonthlyDonationView,
         name: "Monthly Donation View",
         meta: { requiresAuth: true, keepAlive: false },
     },
     {
-        path: "/admin/member/monthly_donation/edit/:id",
+        path: "/admin/donation/monthly_donation/edit/:id",
         component: MonthlyDonationEdit,
         name: "Monthly Donation Edit",
         meta: { requiresAuth: true, keepAlive: false },

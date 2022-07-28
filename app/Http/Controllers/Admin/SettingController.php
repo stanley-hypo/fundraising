@@ -21,9 +21,13 @@ class SettingController extends Controller
     public function index()
     {
 //        $result = Setting::all();
-
         $setting['icon'] = Setting::where("key", "icon")->first()?->value??'';
         $setting['app_name'] = Setting::where("key", "app_name")->first()?->value??'';
+        $setting['title'] = Setting::where("key", "title")->first()?->value??'';
+        $setting['image'] = Setting::where("key", "image")->first()?->value??'';
+        $setting['description'] = Setting::where("key", "description")->first()?->value??'';
+        $setting['name'] = Setting::where("key", "name")->first()?->value??'';
+        $setting['url'] = Setting::where("key", "url")->first()?->value??'';
 
         return response(['setting'=>$setting], 200);
 //        $icon_setting = Setting::where("key", "agency_icon")->first();
