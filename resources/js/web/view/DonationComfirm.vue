@@ -3,6 +3,7 @@
     <div
       class="
         max-w-xl
+        min-w-xl
         sm:max-w-5xl
         p-10
         bg-[#fffffa]
@@ -67,13 +68,15 @@
                 {{ formData.remark }}
             </p>
 
-        </div>
-      <div
-        class=""
-      >
 
-        <q-btn @click="showdata123" class="col-end-6">clickclick</q-btn>
-      </div>
+            <div
+                class="col-start-2 justify-self-end sm:col-start-5 col-span-1"
+            >
+
+                <q-btn @click="showdata123" class="col-end-6">clickclick</q-btn>
+            </div>
+        </div>
+
     </div>
   </q-page>
 </template>
@@ -90,12 +93,35 @@ export default {
   computed: {},
   methods: {
     showdata123() {
-      console.log(this.formData.fullname+ "D");
-        axios.post("https://jsonplaceholder.typicode.com/posts",{
-            userId:13,
-            title:this.formData.email,
-            body:this.formData.address1
+      console.log(parseInt(this.formData.donationAmount)+ "D");
+        axios.post("http://127.0.0.1:8000/api/subscription/store",{
+            type:this.formData.donationType,
+            amount:parseInt(this.formData.donationAmount),
+            name:this.formData.fullname,
+            title:this.formData.title,
+            contact_number:this.formData.mobile,
+            email:this.formData.email,
+            address:this.formData.address1+" "+this.formData.address2+" "+this.formData.address3,
+            area:this.formData.area,
+            district:this.formData.district,
+            receipt:this.formData.receipt,
+            interested:this.formData.interested,
+            payment_method:this.formData.paymentMethod,
 
+            /*
+            type:'123',
+            amount:123,
+            name:'xtr',
+            title:'mr',
+            contact_number:'12345',
+            email:'chu@fds',
+            address:'hr',
+            area:'kt',
+            district:'hk',
+            receipt:1,
+            interested:1,
+            payment_method:'not yet',
+            */
         }).then((response) => console.log(response))
             .catch((error) => console.log(error))
     },

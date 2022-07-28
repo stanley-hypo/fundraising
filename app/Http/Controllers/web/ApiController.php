@@ -13,7 +13,7 @@ class ApiController extends Controller
 
         $request -> validate([
             'type'=>'required|string',
-            'amount'=>'required|string',
+            'amount'=>'required',
             'name'=>'required|string',
             'title'=>'string',
             'contact_number'=>'required|string',
