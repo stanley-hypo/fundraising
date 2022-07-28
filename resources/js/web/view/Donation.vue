@@ -403,6 +403,9 @@ export default {
     const remark = ref("");
     const receipt = ref(false);
     const interested = ref(false);
+
+    // payment methods not default
+
     const titleOptions = ["Mr", "Miss", "Ms", "Mrs", "Dr", "Prof"];
     const areaOptions = [
       "WONG NAI CHUNG GAP",
@@ -491,6 +494,10 @@ export default {
         remark: remark.value,
         receipt: receipt.value,
         interested: interested.value,
+
+        // payment method not default
+          paymentMethod: "not set yet"
+
       };
     };
 
