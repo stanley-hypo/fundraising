@@ -2,89 +2,50 @@
   <Header :myHeader="myHeader"></Header>
   <main>
     <div class="q-pa-md">
-      <q-form method="post" @submit.prevent="onSubmit" autocomplete="off">
-        <q-card class="my-card">
-          <q-card-section>
-            <q-card-section>
-              <div class="flex flex-wrap justify-between gap-2">
-                <div class="text-h6">User Information</div>
-                <q-btn
-                  label="Submit"
-                  type="submit"
-                  text-right
-                  color="primary"
-                  size="md"
-                />
-              </div>
-            </q-card-section>
+      <q-card class="my-card">
+        <q-card-section>
+          <div class="flex flex-wrap justify-between gap-2">
+            <div class="text-h6">Edit Role</div>
+            <q-btn
+              label="Submit"
+              type="submit"
+              text-right
+              color="primary"
+              size="md"
+            />
+          </div>
+        </q-card-section>
 
-            <q-card-section>
-              <div class="grid grid-cols-2 gap-2">
-                <q-input
-                  v-model.trim="user.name"
-                  lazy-rules
-                  filled
-                  outlined
-                  label="Name"
-                  :rules="[
-                    (val) => !!val || val?.length > 2 || 'Field must be filled',
-                  ]"
-                >
-                </q-input>
-                <q-input
-                  v-model.trim="user.email"
-                  lazy-rules
-                  filled
-                  outlined
-                  label="Email"
-                  type="email"
-                  :rules="[(val) => !!val || 'Field must be filled']"
-                >
-                </q-input>
-
-                <q-select
-                  label="Role"
-                  v-model="user.role"
-                  filled
-                  outlined
-                  :options="roles"
-                  lazy-rules
-                  :rules="[(val) => !!val || 'Field must be filled']"
-                >
-                </q-select>
-                <q-checkbox
-                  size="xl"
-                  :true-value="1"
-                  :false-value="0"
-                  v-model="user.active"
-                  label="Active"
-                ></q-checkbox>
-              </div>
-            </q-card-section>
-
-            <q-card-section>
-              <div class="flex flex-wrap justify-end gap-2">
-                <q-btn
-                  label="Submit"
-                  type="submit"
-                  text-right
-                  color="primary"
-                  size="md"
-                />
-              </div>
-            </q-card-section>
-          </q-card-section>
-        </q-card>
-      </q-form>
+        <q-table
+          :title="role?.name + ' Permission'"
+          :rows="permissionslists"
+          :columns="permission_cols"
+          row-key="id"
+          selection="multiple"
+          v-model:selected="selectedpermission"
+          rows-per-page-options="0"
+        />
+        <q-card-section>
+          <div class="flex flex-wrap justify-end gap-2">
+            <q-btn
+              label="Submit"
+              type="button"
+              @click="onSubmit"
+              text-right
+              color="primary"
+              size="md"
+            />
+          </div>
+        </q-card-section>
+      </q-card>
     </div>
   </main>
 </template>
-
 <script>
 import Header from "../../components/Layouts/Header.vue";
 import AdminAuthService from "../../service/AdminAuthService";
 import { NotifyService } from "../../service/Service";
-
+import { useQuasar } from "quasar";
 export default {
   components: {
     Header,
@@ -92,92 +53,88 @@ export default {
   data() {
     return {
       myHeader: {
-        title: "Edit User",
+        title: "Edit Role List",
         navBar: [
           {
-            title: "User List",
-            url: "/admin/user",
+            title: "Role List",
+            url: "/admin/usergroup",
           },
           {
-            title: "View User",
-            url: "/admin/user_view/" + this.$route.params.id,
-          },
-          {
-            title: "Edit User",
+            title: "Edit Role",
           },
         ],
       },
-      user: {
-        name: "",
-        email: "",
-        role: "",
-        permissions: [],
-        active: false,
-      },
-      roles: [],
-      permissions: null,
-      permissionsByRole: [],
-      defaultPermissions: [],
+      selectedpermission: [],
+      role: {},
+      permissionslists: [],
+      permission_cols: [
+        {
+          name: "description",
+          label: "Permission Name",
+          align: "center",
+          field: "description",
+          sortable: true,
+        },
+      ],
     };
   },
-  watch: {},
-
-  created() {
-    //get role
-    // ********
-    // Use .then 不用用 sync / await
-    // ********
-    AdminAuthService.roleList().then((response) => {
-      this.roles = response.result.roles;
-      this.permissions = response.result.permissions;
-      this.permissionsByRole = response.result.permissionsByRole;
-    });
-    //get user
-    AdminAuthService.getuser({
+  setup() {
+    const $q = useQuasar();
+    return {
+      showLoading() {
+        $q.loading.show();
+      },
+      hideLoading() {
+        $q.loading.hide();
+      },
+    };
+  },
+  mounted() {
+    if (!this.$route.params.id) {
+      this.$router.push("/admin");
+    }
+    //init
+    this.permissionslists = [];
+    this.selectedpermission = [];
+    this.role = {};
+    AdminAuthService.getRoleDetail({
       id: this.$route.params.id,
     }).then((response) => {
-      this.user = response.result;
-      // ********
-      //must check before assign
-      // ********
-      if (this.user.currentrole) {
-        this.user.role = {
-          label: this.user.currentrole.name,
-          value: this.user.currentrole.id,
-        };
+      this.role = response.result.role;
+      this.permissionslists = response.result.permissions;
+      const existing_pr = response.result.rolePermissions;
+      for (let item of existing_pr) {
+        const finded = this.permissionslists.filter(
+          (x) => x.id == item.permission_id
+        )[0];
+        this.selectedpermission.push(finded);
       }
     });
   },
-
   methods: {
-    // roleOnChange(role){
-    //     let self = this;
-    //     this.user.role = role;
-    //     this.defaultPermissions = [];
-    //
-    //     this.permissionsByRole[role].forEach(function (value){
-    //         self.defaultPermissions.push(String(value['id']));
-    //     });
-    // },
-
     onSubmit() {
-      AdminAuthService.update({
-        id: this.user.id,
-        name: this.user.name,
-        email: this.user.email,
-        role: this.user.role,
-        active: this.user.active,
-      }).then((response) => {
-        if (response.success) {
+      // formData.append('permissions')
+      this.showLoading();
+      let permissions = [];
+      for (let item of this.selectedpermission) {
+        permissions.push(item.id);
+      }
+      AdminAuthService.updateRole({
+        id: this.role.id,
+        permissions: permissions,
+      })
+        .then((response) => {
           NotifyService.commitNotify({
             color: "positive",
-            message: response.message ?? "Updated",
+            message: "Updated Successfully",
             icon: "check",
             position: "",
           });
-          this.$router.replace("/admin/user");
-        }
-      });
+          this.$router.replace("/admin/usergroup");
+        })
+        .finally(() => {
+          this.hideLoading();
+        });
     },
   },
 };
