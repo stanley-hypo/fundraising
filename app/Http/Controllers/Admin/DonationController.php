@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -12,65 +12,31 @@ use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
-class AuthController extends Controller
+class DonationController extends Controller
 {
 
-    public function list(Request $request){
-        $users = User::all();
-
-        $list = [];
-        foreach($users as $user){
-            $viewUrl = "/admin/user_view/$user->id";
-            $editUrl = "/admin/user_edit/$user->id";
-            $action = [
-                [
-                    'container' => 'div',
-                    'containerClass' => 'd-inline',
-                    'class' => 'btn btn-info btn-sm btn-icon m-1',
-                    'innerHTML' => "<i class='fas fa-eye'></i>",
-                    'type' => 'button',
-                    'url' => $viewUrl,
-                ],
-                [
-                    'container' => 'div',
-                    'containerClass' => 'd-inline',
-                    'class' => 'btn btn-warning btn-sm btn-icon m-1',
-                    'innerHTML' => "<i class='fas fa-edit'></i>",
-                    'type' => 'button',
-                    'url' => $editUrl,
-                ],
-            ];
-
-            $list[] = [
-                'id'=>$user->id,
-                'name'=>$user->name,
-                'email'=>$user->email,
-                'action'=>$action,
-            ];
-        }
-
-        return response(['result'=>$list], 200);
-    }
-
-    public function show(Request $request)
+    public function showMonthly(Request $request)
     {
-        $data = $request->all();
+        // dd($request->all());
+        // $data = $request->all();
 
-        if(empty($data['id'])){
-            return response(['message' => 'Empty Id #USER_GET_ERR01', 'success' => false], 422);
-        }
+        // if(empty($data['id'])){
+        //     return response(['message' => 'Empty Id #USER_GET_ERR01', 'success' => false], 422);
+        // }
 
-        $user = User::find($data['id']);
+        $user = Subscription::all();
 
-        if(empty($user)){
-            return response(['message' => 'Access Failed #USER_GET_ERR02', 'success' => false], 422);
-        }
+        // if(empty($user)){
+        //     return response(['message' => 'Access Failed #USER_GET_ERR02', 'success' => false], 422);
+        // }
 
-        //role and permissions 被 laravel 用左
-        $user['currentrole'] = $user->roles()->first();
-        $haspermissions = User::getAllPermissionsAttribute($user);
-        $user['haspermissions'] = $haspermissions;
+        // //role and permissions 被 laravel 用左
+        // $user['currentrole'] = $user->roles()->first();
+        // $haspermissions = User::getAllPermissionsAttribute($user);
+        // $user['haspermissions'] = $haspermissions;
 //        $user->getAllPermissions();
+
+
 
         return response(['result' => $user, 'success' => true], 200);
     }
@@ -165,3 +131,4 @@ class AuthController extends Controller
         return response(['result' => [], 'success' => true], 200);
     }
 }
+

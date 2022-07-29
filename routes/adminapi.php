@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\DonationController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('register', [AuthController::class, 'register']);
@@ -24,7 +25,7 @@ Route::middleware('auth:adminapi')->group(function () {
 
     //Lewis:
     //Donation
-    
+    Route::post('/donation/showMonthly', [DonationController::class, 'showMonthly']);
 
     //Setting
     Route::post('/settings/index', [SettingController::class, 'index']);
