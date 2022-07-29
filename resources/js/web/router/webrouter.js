@@ -6,15 +6,15 @@ import Donation from "../view/Donation.vue";
 import donateComfirm from "../view/DonationComfirm.vue";
 import Testing from "../view/Testing.vue";
 
+
+
 const routes = [
     { path: "/", component: Donation, meta: { requiresAuth: false } },
     {
-        //path: "/donateComfirm/:name/:ccc/:phone/:address1/:address2/:address3",
-        path: "/donateComfirm/:name",
+        path: "/donateComfirm",
         name: "donateComfirm",
         component: donateComfirm,
-        props: true,
-    },
+},
     {
         path: "/testing",
         name: "Testing",
@@ -53,7 +53,8 @@ router.beforeEach((to, from) => {
             // save the location we were at to come back later
             query: { redirect: to.fullPath },
         };
-    }
+    };
+
 });
 
 export default router;

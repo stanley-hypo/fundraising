@@ -73,7 +73,8 @@
                 class="col-start-2 justify-self-end sm:col-start-5 col-span-1"
             >
 
-                <q-btn @click="showdata123" class="col-end-6">clickclick</q-btn>
+                <q-btn @click="showdata123" class="col-end-6">submit</q-btn>
+                <q-btn @click="backtoform" class="col-end-6">back</q-btn>
             </div>
         </div>
 
@@ -82,55 +83,68 @@
 </template>
 
 <script>
-import { useRoute, useRouter } from "vue-router";
+
 import axios from "axios";
+import router from "../router/webrouter";
+
 
 /*    const route = useRoute()
     const router = useRouter() */
-export default {
-  //props:['name','ccc','donationtype','phone','email','address1','address2','address3','text'],
-  props: ["name"],
-  computed: {},
-  methods: {
-    showdata123() {
-      console.log(parseInt(this.formData.donationAmount)+ "D");
-        axios.post("http://127.0.0.1:8000/api/subscription/store",{
-            type:this.formData.donationType,
-            amount:parseInt(this.formData.donationAmount),
-            name:this.formData.fullname,
-            title:this.formData.title,
-            contact_number:this.formData.mobile,
-            email:this.formData.email,
-            address:this.formData.address1+" "+this.formData.address2+" "+this.formData.address3,
-            area:this.formData.area,
-            district:this.formData.district,
-            receipt:this.formData.receipt,
-            interested:this.formData.interested,
-            payment_method:this.formData.paymentMethod,
+const url="http://127.0.0.1:8000";
 
-            /*
-            type:'123',
-            amount:123,
-            name:'xtr',
-            title:'mr',
-            contact_number:'12345',
-            email:'chu@fds',
-            address:'hr',
-            area:'kt',
-            district:'hk',
-            receipt:1,
-            interested:1,
-            payment_method:'not yet',
-            */
-        }).then((response) => console.log(response))
-            .catch((error) => console.log(error))
+export default {
+
+    beforeRouteEnter(next) {
+
     },
-  },
-  setup() {
-    const formData = JSON.parse(localStorage.getItem("formData"));
-    return {
-      formData,
-    };
-  },
+    setup() {
+        const formData = JSON.parse(localStorage.getItem("formData"));
+
+        function showdata123() {
+            console.log(parseInt(formData.donationAmount));
+            axios.post(url + "/api/subscription/store", {
+                type: formData.donationType,
+                amount: parseInt(formData.donationAmount),
+                name: formData.fullname,
+                title: formData.title,
+                contact_number: formData.mobile,
+                email: formData.email,
+                address: formData.address1 + " " + formData.address2 + " " + formData.address3,
+                area: formData.area,
+                district: formData.district,
+                receipt: formData.receipt,
+                interested: formData.interested,
+                payment_method: formData.paymentMethod,
+
+              /*  type: formData.donationType,
+                amount: parseInt(formData.donationAmount),
+                name: formData.fullname,
+                title: "mr",
+                contact_number: "434324",
+                email: "434324",
+                address: "434324",
+                area: "434324",
+                district: "434324",
+                receipt: true,
+                interested: false,
+                payment_method: "434324",*/
+
+            }).then((response) => console.log(response))
+                .catch((error) => console.log(error))
+        }
+
+
+
+        function backtoform() {
+            router.go(-1)
+        }
+        return{
+            formData,
+            showdata123,
+            backtoform
+        }
+    }
+
+
 };
 </script>

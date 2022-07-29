@@ -506,6 +506,8 @@ export default {
         // payment method not default
         paymentMethod: "not set yet",
       };
+      router.push({name: "donateComfirm"});
+
     };
 
     watch(
