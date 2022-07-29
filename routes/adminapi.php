@@ -26,6 +26,7 @@ Route::middleware('auth:adminapi')->group(function () {
     //Lewis:
     //Donation
     Route::post('/donation/showMonthly', [DonationController::class, 'showMonthly']);
+    Route::post('/donation/getMonthlyDetail', [DonationController::class, 'getMonthlyDetail']);
 
     //Setting
     Route::post('/settings/index', [SettingController::class, 'index']);

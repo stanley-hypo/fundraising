@@ -66,7 +66,7 @@ class SettingController extends Controller
             if(empty($icon_setting)){
                 Setting::set("icon", url("images/blank.png"));
                 $icon_setting = Setting::where("key", "icon")->first();
-            }
+            }   
             $icon_setting->clearMediaCollection('icon');
 
             $imagedetails = getimagesize($_FILES['icon']['tmp_name']);

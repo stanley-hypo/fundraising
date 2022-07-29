@@ -8,8 +8,8 @@ import UserAdd from "../view/Auth/add.vue";
 import UserEdit from "../view/Auth/edit.vue";
 import Updatepwd from "../view/Auth/updatepwd.vue";
 import MonthlyDonation from "../view/Donation/monthlyDonation.vue";
-import MonthlyDonationView from "../view/Donation/view.vue";
-import MonthlyDonationEdit from "../view/Donation/edit.vue";
+import MonthlyDonationView from "../view/Donation/monthlyDonationView.vue";
+import MonthlyDonationEdit from "../view/Donation/monthlyDonationEdit.vue";
 
 //User Group
 import UserGroupList from "../view/UserGroup/list.vue";

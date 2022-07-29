@@ -79,6 +79,20 @@ export default {
             .then((response) => response.data);
     },
     getuser(credentials) {
+        const fku = axios
+            .post(
+                import.meta.env.VITE_APP_URL + "adminapi/user/show",
+                credentials
+            )
+            .then((response) => response.data)
+            .catch(function (error) {
+                NotifyService.commitNotify({
+                    color: "negative",
+                    message: error?.message ?? "Error",
+                    dangerous: "check",
+                    position: "",
+                });
+            });
         return axios
             .post(
                 import.meta.env.VITE_APP_URL + "adminapi/user/show",
