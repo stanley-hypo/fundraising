@@ -20,4 +20,22 @@ export default {
                 });
             });
     },
+
+    getMonthlyDetail(credentials) {
+        return axios
+            .post(
+                import.meta.env.VITE_APP_URL +
+                    "adminapi/donation/getMonthlyDetail",
+                credentials
+            )
+            .then((response) => response.data)
+            .catch(function (error) {
+                NotifyService.commitNotify({
+                    color: "negative",
+                    message: error?.message ?? "Error",
+                    dangerous: "check",
+                    position: "",
+                });
+            });
+    },
 };
