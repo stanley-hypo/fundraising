@@ -82,10 +82,31 @@ class SettingController extends Controller
                 $url =  str_replace($public_path, "", $icon_setting->getMedia('icon')[0]->getPath());
                 Setting::set("icon", $url);
             }
+        }if($request->hasFile('image') && $request->file('image')->isValid()){
+            $icon_setting = Setting::where("key", "image")->first();
+            if(empty($icon_setting)){
+                Setting::set("image", url("images/blank.png"));
+                $icon_setting = Setting::where("key", "icon")->first();
+            }
+            $icon_setting->clearMediaCollection('image');
+
+            $imagedetails = getimagesize($_FILES['image']['tmp_name']);
+            $width = $imagedetails[0];
+            $height = $imagedetails[1];
+
+            if($icon_setting->addMediaFromRequest('image')->usingName('image')
+                ->withCustomProperties(
+                    ['uploadedby'=>auth()->user()->username, 'width'=>$width, 'height'=>$height]
+                )
+                ->toMediaCollection('image', 'media')){
+                $public_path = public_path();
+                $url =  str_replace($public_path, "", $icon_setting->getMedia('image')[0]->getPath());
+                Setting::set("image", $url);
+            }
         }
 
         Setting::set('app_name', $request->get('app_name', ''));
-
+        Setting::set('title', $request->get('title', ''));
         return response([ 'success' => true, 'message' => 'Update Success!' ], 200);
 
     }

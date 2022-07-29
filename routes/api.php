@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::post('subscription/store', [ApiController::class, 'store']);
+Route::get('settingicon/get', [ApiController::class, 'getSetting']);

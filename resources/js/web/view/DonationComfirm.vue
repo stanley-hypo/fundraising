@@ -28,7 +28,7 @@
 
         <div class="sm:col-start-1 col-span-1">{{ $t("payment_method") }}</div>
         <p class="pl-4 sm:col-start-2 col-span-4">
-          {{ formData.address1 }}{{ formData.address2 }}{{ formData.address3 }}
+          {{ formData.paymentMethod }}
         </p>
 
         <div class="sm:col-start-1 col-span-1">{{ $t("need_receipt") }}</div>
@@ -45,37 +45,35 @@
       <div class="flex justify-center">
         <p>{{ $t("donor_info") }}</p>
       </div>
-        <div class="leading-loose grid grid-cols-2 gap-4 break-words sm:grid-cols-5">
+        <div class="leading-loose grid grid-cols-2 gap-4 break-words sm:grid-cols-10">
             <div class="sm:col-start-1 col-span-1">{{ $t("full_name") }}</div>
-            <p class="pl-4 col-start-2 sm:col-start-2 col-span-4">{{ formData.title }}.&nbsp;{{ formData.fullname }}</p>
+            <p class="pl-4 col-start-2 sm:col-start-3 col-span-4">{{ formData.title }}.&nbsp;{{ formData.fullname }}</p>
 
             <div class="sm:col-start-1 col-span-1">{{ $t("mobile_number") }}</div>
-            <p class="pl-4 sm:col-start-2 col-span-4">
-                +{{ formData.mobileAreacode }}&nbsp;{{ formData.mobile }}
+            <p class="pl-4 sm:col-start-3 col-span-4">
+                {{ formData.mobileAreacode }}&nbsp;{{ formData.mobile }}
             </p>
 
             <div class="sm:col-start-1 col-span-1">{{ $t("email") }}</div>
-            <p class="pl-4 sm:col-start-2 col-span-4">
+            <p class="pl-4 sm:col-start-3 col-span-4">
                 {{ formData.email }}
             </p>
 
             <div class="sm:col-start-1 col-span-1">{{ $t("address") }}</div>
-            <p class="pl-4 sm:col-start-2 col-span-4">
+            <p class="pl-4 sm:col-start-3 col-span-4">
                 {{ formData.address1 }}{{ formData.address2 }}{{ formData.address3 }}
             </p>
             <div class="sm:col-start-1 col-span-1">{{ $t("remark") }}</div>
-            <p class="pl-4 sm:col-start-2 col-span-4">
+            <p class="pl-4 sm:col-start-3 col-span-4">
                 {{ formData.remark }}
             </p>
 
 
-            <div
-                class="col-start-2 justify-self-end sm:col-start-5 col-span-1"
-            >
 
-                <q-btn @click="showdata123" class="col-end-6">submit</q-btn>
-                <q-btn @click="backtoform" class="col-end-6">back</q-btn>
-            </div>
+                <q-btn @click="backtoform" class="justify-self-end col-start-2 sm:col-start-8 col-span-1">back</q-btn>
+                <q-btn @click="showdata123" class="bg-gray-900 text-white justify-self-end col-start-2 sm:col-start-10 col-span-1">submit</q-btn>
+
+
         </div>
 
     </div>
@@ -94,8 +92,16 @@ const url="http://127.0.0.1:8000";
 
 export default {
 
-    beforeRouteEnter(next) {
-
+    beforeRouteEnter() {
+        const formData = JSON.parse(localStorage.getItem("formData"));
+        console.log(formData.remark);
+        if(!formData.donationType ||
+            !formData.donationAmount ||
+            !formData.fullname ||
+            !formData.mobile ||
+            !formData.paymentMethod){
+            router.push({path:'/'})
+        }
     },
     setup() {
         const formData = JSON.parse(localStorage.getItem("formData"));

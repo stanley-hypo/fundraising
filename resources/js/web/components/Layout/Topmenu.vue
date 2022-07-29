@@ -8,7 +8,8 @@
           style="text-decoration: none"
         >
           <q-btn flat color="primary">
-            <q-img src="/assets/images/logo.png" style="width: 80px"></q-img>
+            <q-img
+                :src="logopath" style="width: 80px"></q-img>
           </q-btn>
         </router-link>
       </q-toolbar-title>
@@ -51,18 +52,33 @@
   </q-header>
 </template>
 <script>
+import AuthService from "../../service/AuthService";
+
 export default {
   name: "MyLayout",
   data() {
     return {
       leftDrawerOpen: false,
+        logopath:'',
+
     };
   },
-  methods: {
+    mounted() {
+        this.gettingimg();
+      },
+    methods: {
     setLocate(lang) {
       this.$store.commit("auth/updateLocale", lang);
       this.$router.go();
     },
+    gettingimg(){
+        AuthService.showicon()
+            .then(response=>{
+                this.logopath=response.setting.icon
+
+            })
+    }
+
   },
   computed: {
     localLabel() {

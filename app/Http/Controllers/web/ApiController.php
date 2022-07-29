@@ -3,7 +3,7 @@ namespace App\Http\Controllers\web;
 
 use App\Http\Controllers\Controller;
 use App\Models\subscription;
-
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class ApiController extends Controller
@@ -49,4 +49,17 @@ class ApiController extends Controller
         return response(subscription::All());
 
     }
+    public function getSetting(Request $request){
+        $setting['icon'] = Setting::where("key", "icon")->first()?->value??'';
+        $setting['app_name'] = Setting::where("key", "app_name")->first()?->value??'';
+        $setting['title'] = Setting::where("key", "title")->first()?->value??'';
+        $setting['image'] = Setting::where("key", "image")->first()?->value??'';
+        $setting['description'] = Setting::where("key", "description")->first()?->value??'';
+        $setting['name'] = Setting::where("key", "name")->first()?->value??'';
+        $setting['url'] = Setting::where("key", "url")->first()?->value??'';
+
+        return response(['setting'=>$setting], 200);
+
+    }
+
 }

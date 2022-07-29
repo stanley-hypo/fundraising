@@ -35,5 +35,20 @@ export default {
             .catch(function (error) {
                 NotifyService.commitNotify( { color: 'negative', message: error??'Error', dangerous: 'check', position: '' });
             });
-    }
+    },
+    showicon() {
+        return axios
+            .get(
+                import.meta.env.VITE_APP_URL + "api/settingicon/get"
+            )
+            .then((response) => response.data)
+            .catch(function (error) {
+                NotifyService.commitNotify({
+                    color: "negative",
+                    message: error??'Error',
+                    dangerous: 'check',
+                    position: ''
+                });
+            });
+    },
 };
