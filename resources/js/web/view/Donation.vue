@@ -383,13 +383,21 @@ export default {
     const url = ref("https://placeimg.com/500/300/nature");
     const formData = ref([]);
     const donationType = ref("");
-    const donationTypeChecked = JSON.parse(
-      localStorage.getItem("formData")
-    ).donationType;
+    // set the check default value to prevent receive null and error
+    let donationTypeChecked = "";
     const donationAmount = ref("");
-    const donationAmountChecked = JSON.parse(
-      localStorage.getItem("formData")
-    ).donationAmount;
+    let donationAmountChecked = "";
+    if (localStorage.getItem("formData")) {
+      donationTypeChecked = JSON.parse(
+        localStorage.getItem("formData")
+      ).donationType;
+      donationAmountChecked = JSON.parse(
+        localStorage.getItem("formData")
+      ).donationAmount;
+    } else {
+      donationTypeChecked = "";
+      donationAmountChecked = "";
+    }
     const fullname = ref("");
     const title = ref(null);
     const mobileAreacode = ref("");
@@ -496,8 +504,7 @@ export default {
         interested: interested.value,
 
         // payment method not default
-          paymentMethod: "not set yet"
-
+        paymentMethod: "not set yet",
       };
     };
 
