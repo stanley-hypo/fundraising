@@ -37,9 +37,13 @@ class DonationController extends Controller
     public function updateMonthlyDetail(Request $request)
     {
         $input = $request->all();
+        $id = "";
         $validator = Validator::make($input,[
             'name' => 'required|max:100',
             'email' => 'required|email',
+            'type' => 'required',
+            'amount' => 'required|numeric',
+            'contact_number' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -47,15 +51,14 @@ class DonationController extends Controller
         }
 
         $input['email'] = strtolower($input['email']);
-
+        
         DB::transaction(function () use($input, $request, &$subscription){
-            $subscription = Subcription::find($input['id']);
+            $subscription = Subscription::find($input['id']);
 
             $subscription->update($input);
-
         });
 
-        return response([ 'success' => true, 'message' => 'Add User Success!', 'user_id'=>$user->id ], 200);
+        return response([ 'success' => true, 'message' => 'Update Donation Success!', 'donation_id' => $subscription->id ], 200);
     }
     
 }

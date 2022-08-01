@@ -39,7 +39,7 @@ export default {
     },
 
     updateMonthlyDetail(credentials) {
-        return axios
+        const response = axios
             .post(
                 import.meta.env.VITE_APP_URL +
                     "adminapi/donation/updateMonthlyDetail",
@@ -54,5 +54,7 @@ export default {
                     position: "",
                 });
             });
+        console.log(response);
+        return response;
     },
 };

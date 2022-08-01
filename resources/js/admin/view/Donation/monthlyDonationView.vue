@@ -237,7 +237,7 @@ export default {
         });
       }
     } else {
-      await this.$router.push("/admin/subscription");
+      await this.$router.push("/admin/donation/monthly_donation");
     }
   },
 
