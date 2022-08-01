@@ -79,20 +79,6 @@ export default {
             .then((response) => response.data);
     },
     getuser(credentials) {
-        const fku = axios
-            .post(
-                import.meta.env.VITE_APP_URL + "adminapi/user/show",
-                credentials
-            )
-            .then((response) => response.data)
-            .catch(function (error) {
-                NotifyService.commitNotify({
-                    color: "negative",
-                    message: error?.message ?? "Error",
-                    dangerous: "check",
-                    position: "",
-                });
-            });
         return axios
             .post(
                 import.meta.env.VITE_APP_URL + "adminapi/user/show",
@@ -149,23 +135,6 @@ export default {
             .post(
                 import.meta.env.VITE_APP_URL + "adminapi/role/update",
                 credentials
-            )
-            .then((response) => response.data)
-            .catch(function (error) {
-                NotifyService.commitNotify({
-                    color: "negative",
-                    message: error.response?.data?.message ?? "Error",
-                    dangerous: "check",
-                    position: "",
-                });
-            });
-    },
-
-    //donation
-    showMonthly() {
-        return axios
-            .post(
-                import.meta.env.VITE_APP_URL + "adminapi/donation/showMonthly"
             )
             .then((response) => response.data)
             .catch(function (error) {

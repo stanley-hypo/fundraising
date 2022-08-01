@@ -237,7 +237,7 @@ export default {
         });
       }
     } else {
-      await this.$router.push("/admin/user");
+      await this.$router.push("/admin/subscription");
     }
   },
 

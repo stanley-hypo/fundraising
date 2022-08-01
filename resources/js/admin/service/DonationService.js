@@ -4,7 +4,6 @@ import { NotifyService } from "./Service";
 
 export default {
     //donation
-
     showMonthly() {
         return axios
             .post(
@@ -26,6 +25,24 @@ export default {
             .post(
                 import.meta.env.VITE_APP_URL +
                     "adminapi/donation/getMonthlyDetail",
+                credentials
+            )
+            .then((response) => response.data)
+            .catch(function (error) {
+                NotifyService.commitNotify({
+                    color: "negative",
+                    message: error?.message ?? "Error",
+                    dangerous: "check",
+                    position: "",
+                });
+            });
+    },
+
+    updateMonthlyDetail(credentials) {
+        return axios
+            .post(
+                import.meta.env.VITE_APP_URL +
+                    "adminapi/donation/updateMonthlyDetail",
                 credentials
             )
             .then((response) => response.data)
