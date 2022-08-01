@@ -8,5 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Subscription extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'email',
+        'type',
+        'amount',
+        'contact_number',
+    ];
+
     protected $table = 'subscription';
 }

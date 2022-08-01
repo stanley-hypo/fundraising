@@ -17,33 +17,15 @@ class DonationController extends Controller
 
     public function showMonthly(Request $request)
     {
-        // dd($request->all());
-        // $data = $request->all();
-
-        // if(empty($data['id'])){
-        //     return response(['message' => 'Empty Id #USER_GET_ERR01', 'success' => false], 422);
-        // }
-
         $subscription = Subscription::all();
-
-        // if(empty($user)){
-        //     return response(['message' => 'Access Failed #USER_GET_ERR02', 'success' => false], 422);
-        // }
-
-        // //role and permissions 被 laravel 用左
-        // $user['currentrole'] = $user->roles()->first();
-        // $haspermissions = User::getAllPermissionsAttribute($user);
-        // $user['haspermissions'] = $haspermissions;
-//        $user->getAllPermissions();
-
-
 
         return response(['result' => $subscription, 'success' => true], 200);
     }
 
     public function getMonthlyDetail(Request $request)
     {
-        $id = $request->get('id'); 
+        $id = $request->get('id');
+         
         if(!$id){
             return response()->json(['error' => 'UnAuthorised Access'], 401);
         }
@@ -52,6 +34,32 @@ class DonationController extends Controller
         return response(['result' => $subscription, 'success' => true], 200);
     }
 
+    public function updateMonthlyDetail(Request $request)
+    {
+        $input = $request->all();
+        $id = "";
+        $validator = Validator::make($input,[
+            'name' => 'required|max:100',
+            'email' => 'required|email',
+            'type' => 'required',
+            'amount' => 'required|numeric',
+            'contact_number' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response([ 'success' => false, 'message' => 'Validate Failed #SUBSCRIPTION_EDIT_ERR01' ], 422);
+        }
+
+        $input['email'] = strtolower($input['email']);
+        
+        DB::transaction(function () use($input, $request, &$subscription){
+            $subscription = Subscription::find($input['id']);
+
+            $subscription->update($input);
+        });
+
+        return response([ 'success' => true, 'message' => 'Update Donation Success!', 'donation_id' => $subscription->id ], 200);
+    }
     
 }
 
